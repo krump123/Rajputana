@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rajputana - Heritage &amp; Culture</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet" />
+<style>
+  /* Reset & base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #f5f5f7;
+    color: #202124;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a:focus-visible {
+    outline: 2px solid #e00f0f;
+    outline-offset: 2px;
+  }
+
+  /* Header & nav */
+  header {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    flex-wrap: wrap;
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #e00f0f;
+    letter-spacing: 1.5px;
+    cursor: default;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .nav-links button {
+    background: none;
+    border: none;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    color: #5f6368;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    white-space: nowrap;
+  }
+  .nav-links button:hover,
+  .nav-links button:focus-visible {
+    color: #e00f0f;
+    background-color: #e8f0fe;
+    outline: none;
+  }
+  .nav-links button.active {
+    color: #e00f0f;
+    border-bottom: 3px solid #e00f0f;
+    font-weight: 700;
+  }
+
+  /* Page container */
+  main {
+    margin-top: 2rem;
+    min-height: 75vh;
+    padding-bottom: 3rem;
+  }
+  section.page {
+    display: none;
+    animation: fadeIn 0.35s ease forwards;
+  }
+  section.page.active {
+    display: block;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(#0f0f0ff8, rgba(8, 8, 8, 0.884)), url('https://images.unsplash.com/photo-1533463104510-1bde4c2a16b5?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80') center/cover no-repeat;
+    color: rgb(245, 13, 13);
+    text-align: center;
+    padding: 7rem 2rem 5rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(236, 24, 24, 0.925);
+    margin-bottom: 3rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.4rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero p {
+    font-size: 1.3rem;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Cards grid */
+  .cards-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  }
+  .card {
+    background: white;
+    border-radius: 14px;
+    padding: 2rem 2.5rem;
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.07);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    cursor: default;
+  }
+  .card:hover,
+  .card:focus-within {
+    box-shadow: 0 16px 40px rgba(219, 26, 26, 0.918);
+    transform: translateY(-6px);
+  }
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    color: #e00f0f;
+  }
+  .card p {
+    font-size: 1.05rem;
+    color: #444;
+  }
+
+  /* Contact form */
+  form {
+    max-width: 480px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.07);
+  }
+  form label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+    color: #202124;
+  }
+  form input, 
+  form textarea {
+    width: 100%;
+    padding: 0.6rem 0.9rem;
+    margin-bottom: 1.3rem;
+    border: 1.8px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    font-family: inherit;
+  }
+  form input:focus,
+  form textarea:focus {
+    outline: none;
+    border-color: #e00f0f;
+    box-shadow: 0 0 6px rgba(235, 5, 5, 0.925);
+  }
+  form textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+  form button {
+    background-color: #e00f0f;
+    border: none;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 0.7rem 1.6rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  form button:hover,
+  form button:focus-visible {
+    background-color: #e00f0f;
+  }
+
+  /* Footer */
+  footer {
+    background: #202124;
+    color: #eee;
+    text-align: center;
+    padding: 2.3rem 1rem;
+    font-size: 0.9rem;
+    user-select: none;
+    letter-spacing: 0.02em;
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    from {opacity:0; transform: translateY(10px);}
+    to {opacity:1; transform: translateY(0);}
+  }
+
+  /* Warrior Cards - Hindi content, scrollable if needed */
+  .warriors-grid {
+    display: grid;
+    gap: 1.7rem;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    margin-top: 1rem;
+  }
+  .warrior-card {
+    background: rgb(247, 241, 241);
+    border-radius: 12px;
+    padding: 1.6rem 2rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    direction: rtl;
+    text-align: right;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    color: #333;
+  }
+  .warrior-card:hover,
+  .warrior-card:focus-visible {
+    box-shadow: 0 14px 36px #fa1515;
+    transform: translateY(-6px);
+    outline: none;
+  }
+  .warrior-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #e00f0f;
+    margin-bottom: 0.7rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2.6rem;
+    }
+    .hero p {
+      font-size: 1.1rem;
+    }
+    nav {
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+    .nav-links {
+      flex: 1 1 100%;
+      justify-content: center;
+      gap: 1rem;
+    }
+  }
+  .description {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .toggle-button {
+      background-color: #e61515;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      font-size: 14px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .toggle-button:hover {
+      background-color: #e01c1c;
+    }
+    .page {
+  padding: 60px 20px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.about-body p {
+  background-color: #fa1212;
+  padding: 30px;
+  border-radius: 10px;
+  color: #333;
+}
+.hero{
+  background: url(./images/maharana\ pratap.jpg);
+  background-repeat: no-repeat;
+  /* background-position: center; */
+  background-size: cover;
+}
+.royal-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+.royal-grid div {
+  width: 16.66%; /* 100 / 6 = 16.66% */
+  padding: 5px;
+  box-sizing: border-box;
+
+
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari&amp;display=swap" rel="stylesheet" />
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav role="navigation" aria-label="Primary Navigation">
+      <a href="index.html" class="logo" aria-current="page" tabindex="0">Rajputana</a>
+      <div class="nav-links" role="menubar" aria-label="Main menu">
+        <button role="menuitem" class="active" aria-current="page" id="nav-home" tabindex="0">Home</button>
+        <button role="menuitem" id="nav-about us" tabindex="-1"><a href="./about us.html">About Us </a> </button>
+        <button role="menuitem" id="nav-heritage" tabindex="-1">Heritage</button>
+        <button role="menuitem" id="nav-culture" tabindex="-1">Culture</button>
+        <button role="menuitem" id="nav-randhawal" tabindex="-1">History</button>
+        <button role="menuitem" id="nav-veer" tabindex="-1">Rajput Warriors</button>
+        <button role="menuitem" id="nav-contact" tabindex="-1">Contact Us</button>
+      </div>
+    </nav>
+  </div>
+</header>
+<main>
+  <section id="page-home" class="page active" aria-label="Home Page">
+    <div class="hero">
+      <h1>Shree Rastriya Randhaval Rajput Sangathan- Bharat</h1>
+      <p>Celebrating the land of brave Rajputs, rich history, vibrant culture, and architectural marvels.</p>
+    </div>
+    <div class="container cards-grid" aria-label="Highlights on the Home Page">
+    <article class="card" tabindex="0" role="article">
+                <a href="forts.html">
+                    <h3>Majestic Forts</h3>
+                    <p>Discover the grandeur of Rajputana's architecture standing tall through centuries.</p>
+                </a>
+            </article>
+            <article class="card" tabindex="0" role="article">
+                <a href="traditions.html">
+                    <h3>Royal Traditions</h3>
+                    <p>Immerse yourself in the colorful attire and regal ceremonies cherished by Rajput clans.</p>
+                </a>
+            </article>
+
+            <article class="card" tabindex="0" role="article">
+                <a href="statues.html">    
+                    <h3>Statues</h3>
+                    <p>Immerse yourself in the Artifacts.</p>
+                </a>
+            </article>
+            <article class="card" tabindex="0" role="article">
+                <a href="documents.html">
+                    <h3>Documents</h3>
+                    <p>Preserving the Legacy: Original Rajputana Documents, A Testament to a Glorious Heritage.</p>
+                </a>
+            </article>
+            <article class="card" tabindex="0" role="article">
+                <a href="history.html">
+                    <h3>Historic Videos</h3>
+                    <p>Explore the rich history of Rajputana through captivating videos.</p>
+                </a>
+            </article>
+
+    </div>
+
+  <section id="page-about" class="page" aria-label="About Us Page">
+  <div class="container">
+    <h2 style="font-family: 'Playfair Display', serif; color:#e81a1a; margin-bottom:1rem;">About Us</h2>
+    <div class="about-body" aria-label="About Namdev Finvest">
+      <p style="font-size: 1.1rem; line-height: 1.8;">
+        Namdev Finvest began its journey in 1997 with a strong vision — to empower every individual and micro-entrepreneur 
+        who dares to dream. We believe that <strong>"No Dreamer is Small, and No Dream is Big."</strong><br><br>
+
+        As a registered NBFC under the Companies Act with RBI Reg No: <strong>B-10.00260</strong>, we are committed to 
+        providing accessible financial services to the underserved and unserved sectors of society. Through innovative credit 
+        products, digital onboarding, and grassroots outreach, we are enabling communities to rise above financial limitations.<br><br>
+
+        Over the years, Namdev Finvest has become a trusted name for MSMEs, self-employed individuals, and emerging sectors 
+        like solar and EV financing. Our mission is to ensure inclusive growth, empower local livelihoods, and fuel India’s 
+        financial progress from the ground up.
+      </p>
+    </div>
+  </div>
+</section>
+  </section>
+
+  <section id="page-heritage" class="page" aria-label="Heritage Page">
+    <div class="container">
+      <h2 style="font-family: 'Playfair Display', serif; color:#e81a1a; margin-bottom:1rem;">Rajputana Heritage</h2>
+      <div class="cards-grid" aria-label="Heritage details">
+        <article class="card" tabindex="0" role="article">
+          <h3>Amber Fort</h3>
+          <p>An architectural marvel near Jaipur blending Hindu and Mughal influences with breathtaking views.</p>
+        </article>
+        <article class="card" tabindex="0" role="article">
+          <h3>Chittorgarh Fort</h3>
+          <p>One of the largest forts in India, known for its history of valor and sacrifice.</p>
+        </article>
+        <article class="card" tabindex="0" role="article">
+          <h3>Mehrangarh Fort</h3>
+          <p>A massive fort in Jodhpur that proudly overlooks the city with stunning palatial complexes.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="page-culture" class="page" aria-label="Culture Page">
+    <div class="container">
+      <h2 style="font-family: 'Playfair Display', serif; color:#e81a1a; margin-bottom:1rem;">Rich Rajputana Culture</h2>
+      
+      <div class="cards-grid" aria-label="Cultural aspects">
+  <a href="weddings.html" class="card-link">
+    <article class="card" role="article">
+      <h3>Weddings</h3>
+      <p>Elegance. Honor. Eternity. The spirit of Rajputana in every wedding moment.</p>
+    </article>
+  </a>
+</div>
+
+        <article class="card" tabindex="0" role="article">
+          <h3>Music &amp; Dance</h3>
+          <p>Folk music and dances like Ghoomar echo the joyful spirit and heritage of Rajput traditions.</p>
+        </article>
+
+        <article class="card" tabindex="0" role="article">
+          <a href="paintings.html" class="card-link">
+          <h3>Paintings</h3>
+          <p>Art that speaks of valor, culture, and timeless beauty.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="page-randhawal" class="page" aria-label="History">
+    <div class="container">
+    
+      <body class="history-page">
+		
+
+  <div class="body-wrapper">
+    <main class="container main-container history-page">
+      <section class="row">
+        <div class="col-lg-12 text-justify">
+          <p>
+            A <b>Rajput</b> (from Sanskrit <i>raja-putra</i>, “son of a king”) is a member of one of the patrilineal clans of western, central, northern India and some parts of Pakistan. They claim to be descendants of ruling Hindu warrior classes of North India. Rajputs rose to prominence during the 6th to 12th centuries. Until the 20th century, Rajputs ruled in the “overwhelming majority” of the <a href="/princelystates.php">princely states</a> of Rajasthan and Surashtra, where the largest number of <a href="/princelystates.php">princely states</a> were found.
+          </p>
+					<figure class="pull-left thumbnail margin-right-10">
+						<a class="" href="./images/Rajputana_Map.jpg" target="_blank" rel="noopener">
+							<img src="./images/Rajputana_Map.jpg" title="Map of Rajputana" alt="Map of Rajputana" style="width:200px;" class="">
+							<figcaption class="caption text-center">
+								Map of Rajputana
+							</figcaption>
+						</a>
+					</figure>
+          <p>
+            The Rajput population and the former Rajput states are found spread through much of the subcontinent, particularly in north, west and central India. Populations are found in Rajasthan, Saurashtra, Uttar Pradesh, Himachal Pradesh, Haryana, Jammu, Punjab, Uttarakhand, Madhya Pradesh and Bihar.
+          </p>
+          <p>
+            <iframe class="pull-right margin-left-10" width="400" height="225" src="http://www.youtube.com/embed/H8zE_EQrYYQ?rel=0" frameborder="0" allowfullscreen=""></iframe>
+            There are several major subdivisions of Rajputs, known as <i>vansh</i> or <i>vamsha</i>, the step below the super-division jati. These <i>vansh</i> delineate claimed descent from various sources, and the Rajput are generally considered to be divided into three primary vansh: Suryavanshi denotes descent from the solar deity Surya, Chandravanshi from the lunar deity Chandra, and Agnivanshi from the fire deity Agni. Lesser-noted vansh include Udayvanshi, Rajvanshi, and Rishivanshi. The histories of the various <i>vansh</i>s were later recorded in documents known as <i>vanshaavaliis</i>.
+          </p>
+          <p>
+            Beneath the vansh division are smaller and smaller subdivisions: <i>kul</i>, <i>shakh</i> (“branch”), <i>khamp</i> or <i>khanp</i> (“twig”), and <i>nak</i> (“twig tip”). Marriages within a <i>kul</i> are generally disallowed (with some flexibility for kul-mates of different <i>gotra</i> lineages). The <i>kul</i> serves as primary identity for many of the Rajput clans, and each kul is protected by a family goddess, the <a href="rajput-kuldevis.php"><i>kuldevi</i></a>.
+          </p>
+        </div>
+      </section>
+			
+			
+
+      <section class="row">
+        <div class="col-lg-12 text-justify">
+          <h2><span><i class="fa fa-sitemap"></i> The main lineages</span></h2>
+          <p>Rajputs who are descended from the thirty-six royal Kshatriya clans mentioned in the sacred books, the Puranas, and in the two great Indian epics, the “Mahabharata” and the “Ramayana”, are classified into three basic lineages (<i>vanshas</i> or <i>vamshas</i>):</p>
+          <dl class="dl-horizontal">
+            <dt><a href="#suryavanshi">Suryavanshi</a>:</dt>
+            <dd>or Raghuvanshies (the clans of the Solar dynasty), descended through Manu, Ikshvaku, Harischandra, Raghu, Dasaratha and Rama.</dd>
+            <dt><a href="#chandravanshi">Chandravanshi</a>:</dt>
+            <dd>
+              or Somavanshies (the clans of the lunar dynasty), descended through Yayati, Deva Nausha, Puru, Yadu, Kuru, Pandu, Yudhisthira and Krishna.
+              <ol>
+                <li>The Yaduvanshi lineage are a major sub-branch of the Chandravanshi lineage. Lord Krishna was born a Yaduvanshi.</li>
+                <li>The Puruvanshi lineage are a major sub-branch of the Chandravanshi Rajputs. The Kauravs and Pandavs of the epic Mahabharata were Puruvanshis.</li>
+              </ol>
+            </dd>
+            <dt><a href="#agnivanshi">Agnivanshi</a>:</dt>
+            <dd>The Agniculas (the clans of the fire dynasty), descended from Agnipala, Swatcha, Mallan, Gulunsur, Ajpala and Dola Rai.</dd>
+          </dl>
+          <p>
+            Each of these Vanshas or lineages is divided into several clans (kula), all of whom claim direct patrilineage from a remote but common male ancestor who supposedly belonged to that Vansha. Some of these 36 main clans are further subdivided into shakhas or “branches”, again based on the same principle of patrilineage.
+          </p>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="alert alert-warning no-margin">
+                <h4>The 36 Royal Races <span class="small">(in no particular order)</span>:</h4>
+                <ul class="row">
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Surya or Solar race</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Sóm or Lunar race</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Gáhlot or Grahilot</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Yádu, Jádu or Jadon</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Tuár or Tanwar</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Rathore</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Kachwaha</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Parmara or Ponwar</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Chauhan</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Chaluk or Solanki</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Parihara</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Chawura</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Tak or Takshak</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Jit, Gét, or Jat</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><i class="text-muted">Hán or Hún <sup>*</sup></i></li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Katti</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Balla</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Jhala</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Gohil</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Jaitwar or Kamari</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Silar</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><i class="text-muted">Sarwaiya <sup>*</sup></i></li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><i class="text-muted">Dabi <sup>*</sup></i></li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Gaur</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Dor or Doda</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Gaharwal</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Bargujar</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Sengar</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Sikarwar</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Bais</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Dahia</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Johya</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Mohil</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2">Nikumpa</li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><i class="text-muted">Rajpali <sup>*</sup></i></li>
+                  <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><i class="text-muted">Dahima <sup>*</sup></i></li>
+                </ul>
+                <div class="row">
+                  <div class="col-lg-12 text-muted small"><i><sup>*</sup> No longer exist</i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p>
+            Each shakha or basic sub-clan has its individual genealogical creed, describing the essential peculiarities, religious tenets, and original domicile of the clan. This creed is a touchstone of traditional affinities and provides all information governing the laws of intermarriage.
+          </p>
+
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="alert alert-warning no-margin">
+								<h4>History of individual clans:</h4>
+								<div class="row">
+								<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/rathore.php">Rathore</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/chauhan.php">Chauhan</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/deora.php">Deora Chauhan</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/hada.php">Hada Chauhan</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/khichi.php">Khichi Chauhan</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/songara.php">Songara Chauhan</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/bhati.php">Bhati</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/kachwaha.php">Kachwaha</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/katoch.php">Katoch</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/shekhawat.php">Shekhawat</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/sisodia.php">Sisodia</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/tanwar.php">Tanwar</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/parmar.php">Parmar</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/parmar.php">Pawar</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/parmar.php">Barad Parmar</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/parmar.php">Umath Parmar</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/jadeja.php">Jadeja</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/solanki.php">Solanki</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/jadon.php">Jadon</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/chandel.php">Chandel</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/badgurjar.php">Badgujjar</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/gaur.php">Gaur</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/vaghela.php">Baghela</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/jhala.php">Jhala</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/gautam.php">Gautam</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/wadiyar.php">Wadiyar</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/chudasama.php">Chudasama</a></div><div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><a href="/history/chavda.php">Chavda</a></div>								</div>
+							</div>
+						</div>
+					</div>
+
+					<div data-ajax-load="/modules/history-clans.php">          <article class="row" id="suryavanshi">
+            <h3 class="col-lg-12"><i class="fa fa-sun-o"></i> Major Suryavanshi clans</h3>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong>Amethiya:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              The title of this clas is derived from the name of a village in the Lucknow distrcit of U.P called Amethi. They are generally supposed to be a sept of the <i>Chamar-Gaurs</i>, a tradition which they preserve by the worship of the <i>Rampi</i> of curruers scraper.
+              The clan is supposed to have been originally settled at Kalinjar in Bundelkhand, whence they emigrated into Oudh, under Raipal Singh, about the the time of <a href="https://en.wikipedia.org/wiki/Timur" target="_blank" rel="popup">Tamerlane</a> (the Turco-Mongol conqueror).
+              The clan is divided into two branches — the Amethiyas of Kumhrawan in Rai Bareli, and the Amethiyas of Unsari in Barabanki.
+              <dl class="dl-horizontal">
+                <dt>Gotra: </dt><dd>Bharadwaj</dd>
+                <dt>Deity:</dt><dd>Durga</dd>
+              </dl>
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong>Bais:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              The Bais Rajput, (also known as Bhains Rajput in certain regions), are a powerful and ancient Rajput clan composed of the wealthy, warriors, entrepreneurs, and zamindar (land owners).
+              The Bais claim descent from Lakshmana, brother of Rama. The Bais Rajput are renowned as warriors with the ability to maintain dominion over their empires. Their reputation was earned by their kings and landowners that ruled over northern India for and held vast tracts of land for the clan. Princely states of the Bais were Oudh, Lucknow, and Sialkot.
+              <dl class="dl-horizontal">
+                <dt>Gotra: </dt><dd>Bharadwaj</dd>
+                <dt>Ved: </dt><dd>Yajurved</dd>
+                <dt>Kuldevi: </dt><dd>Kalika</dd>
+                <dt>Ishta:</dt><dd>Shivji</dd>
+              </dl>
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong>Chattar:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              The most respected and highly distinguished amongst all the Rajput clans as a rajput can not be a Kshatriya if not a Chattari. The mother caste of Suryavanshi Rajputs which originated from Rajputana in Rajasthan. However, there are many Gotras and sub castes in other major dynasties which emerged from the Chattari lineage. Chattaris belong to the military and ruling order of the traditional Vedic-Hindu social system as outlined by the Vedas.
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong><a href="gaur.php">Gaur</a>:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              The Suryavanshi Rajputs of Gaur are descendants of the Rajput Pala Dynasty which ruled ancient Bengal, then known as Gaur. Its capital was Lakshmanabati, named after the Pala king Lakshman Pal, under whose patronage the first literary work in Bengali, “Geet Govindam”, was composed by the Bengali poet Jayadeva (circa 1200 AD).
+              Some old texts of the British raj refer to the Pala rajputs as Gour or Gaur Rajputs. Government gazettes of the British era have references to Gaur Zamindars in Uttar Pradesh, Madhya Pradesh, and Rajasthan.
+              <dl class="dl-horizontal">
+                <dt>Gotra: </dt><dd>Bharadwaj</dd>
+                <dt>Ved: </dt><dd>Yajurved</dd>
+                <dt>Kuldevi: </dt><dd>Mahakali</dd>
+                <dt>Ishta:</dt><dd>Hridradev</dd>
+              </dl>
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong><a href="kachwaha.php">Kachwaha</a>:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              The Kachwaha are a Suryavanshi Rajput clan who ruled a number of kingdoms and princely states in India such as Dhundhar, <a href="/view/alwar">Alwar</a>, and <a href="/view/maihar">Maihar</a>, while the largest and oldest state was Amber, now part of <a href="/view/jaipur">Jaipur</a>. The Maharaja of Jaipur is regarded as the head of the extended Kachwaha clan. There are approximately 71 subclans of the Kachwaha, including the Rajawat, <a href="shekhawat.php">Shekhawat</a>, Sheobramhpota, Naruka, Nathawat, Khangarot, and Kumbhani. They claim descent from Kusha, the younger of the twin sons of Rama.
+              The Kachwaha clan ruled in Jaipur right up until modern times. The last ruling Maharaja of Jaipur was Sawai Man Singh II of Jaipur (1917-1970). Shortly after India's independence in 1948, Sawai Man Singh peacefully acceded the state of Jaipur to the Government of India. He then was appointed the first Rajpramukh of Rajasthan.
+              <dl class="dl-horizontal">
+                <dt>Gotra: </dt><dd>Gautam</dd>
+                <dt>Kuldevi: </dt><dd>Jamwai Mata</dd>
+                <dt>Ishta:</dt><dd>Ramchandraji</dd>
+              </dl>
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong>Minhas:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              Minhas Rajputs are Suryavanshis and claim descent from Rama a legendary king of Ayodhya. In Rajputana, their closest cousins are the Kachwaha and Bargujar Rajputs of Jaipur. They trace their ancestry to the Ikshvaku dynasty of Northern India (The same clan in which Lord Rama was born. He, therefore is the ‘kuldevta’(family deity) of the Hindu Minhas Rajputs). Specifically, they claim descent from Kusha younger of the twin sons of Rama, hero of the Ramayana, to whom patrilineal descent from Surya is in turn ascribed.
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong>Pakhral:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              Pakhral Rajput is a sub clan of Minhas Rajput. Pakhral Rajputs are the most dynamic rulers in the history of sub-continent and they deserve for holding the dinstinction of being the hero of sub-continent. The founders of the city and state of Jammu and its rulers from ancient times to 1948 C.E. Ansistors of Pakhral Rajputs are mostly Hindus, in early 18th and 19th century mostly Pakhral Rajputs embraced Islam and moved from Jaipur and Rajastan(India) to Kashmir and Pakistan. Punjab specially the area of Potohar and Azad jammu Kashmir is the origin of Pakhral Rajputs.
+              Mirpur Azad jamu Kashmir and the Rawalpindi District mostly named as the area of potohar is very famous as the area of Pakhral Rajputs. Raja is mostly used as a title in Pakhral Rajputs which is derived from the word Rajput.
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong>Patial or Kaundal</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              A suryavanshi Rajput clan of Chattari lineage in North India that claims solar origin by direct descent from Sri Rama Chandra of Raghav (Raghuvanshi) Rajput clan. Their traditional areas of residence are Rajputana, Trigarta Kingdom (the modern Jalandhar District), i.e. the areas of residence are mainly in the Indian states of Punjab, Rajasthan, Uttarakhand and Himachal Pradesh. They are a branch of Sisodya Rajputs of Rajputana who moved out of Mewar during the reign of Rana Amar Singh as he accepted the Mughal Supremacy of Jehangir and settled in Eastern Hills.
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong><a href="pundir.php">Pundir</a>:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              The Pundir (also spelled Pandeer, Pandir, Pundhir, Pundeer, Poondir or Poondeer) is a Suryavanshi branch of Rajputs. The word itself is derived from the Sanskrit word Purandara literally meaning “the destroyer of forts”. The Pundir Rajputs hold riyasat in Nahan, Garhwal, Nagaur and Saharanpur where their Kuldevis are situated. Their shakha is Koolwal and their Kuldevis are Shakumbhri Devi in Saharanpur and Rajasthan along with Punyakshini Devi in Garhwal with their gotra being Pulastya and Parashar.
+              Elliot writes that in the Haridwar region of Uttar Pradesh, where they are most prominent today, over 1,440 villages are claimed by Pundir Rajputs with high concentrations in the districts of Dehradun, Saharanpur, Muzaffarnagar, Aligarh and Etawah. According to the British census of 1891 the population of the Pundir Rajputs was recorded at approximately 29,000.
+              The Pundir clan has its origins with Raja Pundarik, the fourth king in line after Kusha. Pundarik is revered as a Rishi and his temple is situated in Katheugi village of the Kullu district in the state of Himachal Pradesh. The rishi is depicted as a white Naga and in the Puranic lore Pundarik is the name of a White Naga and the legend of Pundarik Rishi also affirms his birth as a Naga from an earthen pot. Kusha, the second born of Sita and Ram, is said to have been the progenitor of the Pundirs.
+              <dl class="dl-horizontal">
+                <dt>Gotra: </dt><dd>Pulutsya</dd>
+                <dt>Ved: </dt><dd>Yajurved</dd>
+                <dt>Kuldevi:</dt><dd>Dahima</dd>
+              </dl>
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong>Naru:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              The Narus of Hoshiarpur District claim that their ancestor was a Suryavanshi Rajput of Muttra, named Nipal Chand, and descended from Raja Ram Chand. He was converted in the time of Mahmud of Ghazni and took the name of Naru Shah. Naru Shah settled at Mau in Jalandhar, Whence his son, Ratan Pal, founded Phillaur hence founded the four Naru parganas of Haryana, Bajwara, Sham Chaurasi and Ghorewaha in Hoshiarpur and that of Bahram in Jullunder. The chief men of these parganas are still called Rai or Rana. Some kept Brahmans of the Baadeo got.
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong><a href="rathore.php">Rathore</a>:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              The Rathore are a major Rajput clan originally descended from the Gahadvala Dynasty in Kannauj in Uttar Pradesh. At the time of the end of the British Raj in 1947 they were rulers in 14 different princely states in Marwar, Jangladesh, Rajasthan, and Madhya Pradesh. The largest and oldest among these was <a href="/view/jodhpur">Jodhpur</a>, in Marwar and <a href="/view/bikaner">Bikaner</a>. The Maharaja of Jodhpur is regarded as the head of the extended Rathore clan of Hindu Rajputs.
+              At the time of Tod's list in 1820, the Rathore clan had 24 branches, including the Barmera, Bika, Boola, Champawat, Dangi, Jaitawat, Jaitmallot, Jodha, Khabaria, Khokhar, Kotaria, Kumpawat, Mahecha, Mertiya, Pokharan, Mohania, Mopa, Randa, Sagawat, Sihamalot, Sunda, Udawat, Vanar, and Vikramayat.
+              <dl class="dl-horizontal">
+                <dt>Gotra: </dt><dd>Goutam, Kashyap, Shandilya</dd>
+                <dt>Ved: </dt><dd>Samved, Yajurved</dd>
+                <dt>Kuldevi: </dt><dd>Nagnechiya</dd>
+                <dt>Ishta:</dt><dd>Ramchandraji</dd>
+              </dl>
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong><a href="sisodia.php">Sisodia</a>:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              The Sisodias are Suryavanshi Rajputs claiming descent from Lord Rama through his son Lava. They were known as the Ranas of <a href="/view/udaipur_rajasthan">Mewar</a>, which was a princely state under the British Raj. The earliest history of the clan claims that they moved from Lahore to Shiv Desh or Chitor in 134 AD. They established themselves as rulers of Mewar in 734 AD, ruling from the fortress of Chittorgarh. They trace their descent from Bappa Rawal (ruled 734-753), eighth ruler of the Guhilot Dynasty.
+              <dl class="dl-horizontal">
+                <dt>Gotra: </dt><dd>Kashyap</dd>
+                <dt>Ved: </dt><dd>Yajurved</dd>
+                <dt>Kuldevi: </dt><dd>Baneshwari</dd>
+                <dt>Kuldev:</dt><dd>Mahadev</dd>
+              </dl>
+            </div>
+          </article>
+
+          <article class="row" id="chandravanshi">
+            <h3 class="col-lg-12"><i class="fa fa-moon-o"></i> Major Chandravanshi clans</h3>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong>Bachhal:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              They claim their descent from a mythical personage called Raja Vena, Their earliest settlements were in Rohilkhund, where they were the dominant race until 1174. It has been suggested that the founder of the clan was Raja Bairat of Barkhar in the Kheri district, who is said to have entertained the five <i>Pandawas</i> during their exile from Hastinapur. The Bachhals of these early times were an enterprising race, and constructed several canals, of which traces can be found to the present day.
+              Bachhals are found chiefly in the Bulandshahar, Muttra, Moradabad, Shahjahanpur, Sitapur, and Kheri districts of Oudh and North-West provinces.
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong><a href="bhati.php">Bhati</a>:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              Bhati Rajputs are a Chandravanshi Rajput clan from the <a href="/view/jaisalmer">Jaisalmer</a> region of western Rajasthan. The Maharajas of Jaisalmer trace their lineage back to Jaitsimha, a ruler of the Bhati Rajput clan. The major opponents of the Bhati Rajputs were the powerful Rathor clans of Jodhpur and Bikaner. They used to fight battles for the possession of forts, waterholes or cattle. <a href="/view/jaisalmer">Jaisalmer</a> was positioned strategically and was a halting point along a traditional trade route traversed by the camel caravans of Indian and Asian merchants. The route linked India to Central Asia, Egypt, Arabia, Persia, Africa and the West.
+              Bhati Rajputs were proficient horse riders, marksman and warriors. Their reign spread to the Punjab, Sindh and beyond, to Afghanistan. The City of Ghazni was named after a brave Bhatti warrior. In Lahore, a monument exists to this day, which is called the Bhati Gate, named so probably because it opens in the direction of the “Sandal Bar”, an area ruled by Rai Sandal Khan Bhati Rajput. They earned too much by imposing the taxes levies on the passing Carvans.they were known as a great shooter with Gun.
+              <dl class="dl-horizontal">
+                <dt>Gotra: </dt><dd>Atri</dd>
+                <dt>Ved: </dt><dd>Yajurved</dd>
+                <dt>Kuldevi:</dt><dd>Mahalaxmi</dd>
+              </dl>
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong>Bhangalia:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              The Bhangalia clan are the erstwhile rulers of Chota and Burra Bhangal in Kangra District of Himachal Pradesh.
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong><a href="chandel.php">Chandelas</a>:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              In the early 10th century, the Chandelas (Chandravanshi lineage) ruled the fortress-city of Kalinjar. A dynastic struggle (c.912-914 CE) among the Pratiharas provided them with the opportunity to extend their domain. They captured the strategic fortress of Gwalior (c.950) under the leadership of Dhanga (ruled 950-1008).
+              <dl class="dl-horizontal">
+                <dt>Gotra: </dt><dd>Chandatreya (Chandrayan), Sheshdhar, Parashar and Goutam</dd>
+                <dt>Kuldevi:</dt><dd>Maniyadevi</dd>
+                <dt>Devta: </dt><dd>Hanumanji</dd>
+              </dl>
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong><a href="chudasama.php">Chudasama</a>:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              The Chudasama and their collaterals the Raizada are a branch of the Lunar or Chandravanshi line of Rajputs, who trace their origin to Lord Krishna.
+							<dl class="dl-horizontal">
+                <dt>Gotra: </dt><dd>Atri</dd>
+                <dt>Mata: </dt><dd>Mahasati Ansuya</dd>
+                <dt>Dada: </dt><dd>Brahmaji</dd>
+                <dt>Mulpurush: </dt><dd>Adinarayan</dd>
+                <dt>Kuldevi: </dt><dd>Shree Ambaji Maa</dd>
+                <dt>Sahayakdevi: </dt><dd>Aai Shree Khodiyar Mataji (Matel)</dd>
+                <dt>Kuldev: </dt><dd>Lord Shri Krishna</dd>
+                <dt>Ved: </dt><dd>Samved</dd>
+                <dt>Kul: </dt><dd>Yadukul</dd>
+                <dt>Vansh: </dt><dd>Chandrvansh</dd>
+                <dt>Sakha: </dt><dd>Madhyaydini</dd>
+                <dt>Mahadev: </dt><dd>Sidhdheswar Mahadev</dd>
+                <dt>Pravar: </dt><dd>Durvasa, Datatrey, Chandra</dd>
+              </dl>
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong><a href="jadon.php">Jadauns</a>:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              Jadauns (also known as Jadons) claim to have descended from the Hindu mythological character Yadu. As the descendents of Yadu, they are classified as under the Chandravanshi branch of the Rajput caste hierarchy. However according to The Rajputana gazetteers, Aphariyas clan of Yaduvanshi Ahirs also claims descent from Jadauns. Although, they are Yadavs. Jadauns also occupied the forts of Bijai Garh, built by Pundir Rajputs, at Bayana and Timan Garh near <a href="/view/karauli">Karauli</a>. The distance between the two forts is about 50 kilometers. The Great Fort of Majhola in Moradabad District of Uttar Pradesh was also built by the Jadauns. Jadons are among the 36 royal clans of Rajputs, They are of Chandravanshi lineage and Kuldevi of Jadon's is Kaila devi at Karauli (Rajasthan).
+              <dl class="dl-horizontal">
+                <dt>Kuldevi:</dt><dd>Kaila devi (Karauli)</dd>
+              </dl>
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong><a href="jadeja.php">Jadeja</a>:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              Jadeja is the name of a major clan of Yadavs or Chandravanshi Rajputs.
+							<dl class="dl-horizontal">
+								<dt>Gotra: </dt><dd>Atri</dd>
+								<dt>Mata:</dt><dd>Mahasati Ansuya</dd>
+								<dt>Dada: </dt><dd>Brahmaji</dd>
+								<dt>Mulpurush: </dt><dd>Adinarayan</dd>
+								<dt>Kuldevi: </dt><dd>Shree Momai Mataji (Ambaji Maa from the time of Lord Krishna called Mahamaya/Yogmaya means Momai Maa)</dd>
+								<dt>Ishtadevi: </dt><dd>Shree Ashapura Mataji (Matano Madh)</dd>
+								<dt>Adhisthadevi: </dt><dd>Maa Hinglaj Devi</dd>
+								<dt>Kuldev: </dt><dd>Somnath Mahadev(Veraval), Sidhhnath Mahadev(Dwarka)</dd>
+								<dt>Ved: </dt><dd>Samved</dd>
+								<dt>Kul: </dt><dd>Yadukul/Vrushnikul</dd>
+								<dt>Vansh: </dt><dd>Samavansh</dd>
+								<dt>Sakha: </dt><dd>Madhani/Madhyayni/Madhyaydini</dd>
+								<dt>Pravar: </dt><dd>Tran Om Somdat, Durvasa, Angira Muni</dd>
+							</dl>
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong>Jarral:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              The Jarral are both a Hindu and Muslim Rajput tribe of Jammu and Kashmir in India and Azad Kashmir and Punjab in Pakistan. This Rajput tribe belongs to Chandravanshi (Lunar race) lineage. Jarrals are Aryans. They claim to be descendants of Pandavas of Mahabharata through prince Arjuna who was a brave hero of Mahabharata. The grandson of Arjuna was Parikshit after his death his elder son Janamjaya became Maharaja of Hastinapur his younger brother Prince Nakashena became the king of Indarprasth and after they got power they moved to Kalanaur in Punjab. Raja Naka does many marriages and his tribe was known as Jarral. In 1187 after defeat by Muslim King Shab-u-Din they lost Kalanaur. Shab-u-Din invited the Jarral Raja to accept Islam and the Raja accepted Islam but many other Jarrals did not accept Islam and moved to different parts such as Jammu, Punjab and Himachal Pradesh. After conversion the Muslim Jarral become an out caste. The other Rajput rulers broke their relations with Muslim jarrals after which the Muslim Jarrals became weak and moved to Rajauri district in Kashmir and defeated Sardar Amna Pal the king of Rajauri. After this the royal Dynasty of Muslim Jarrals ruled over Rajauri for 670 years. The Hindu jarrals also moved to various places in Jammu region in Bhaderwah, Bhalessa the main families of Hindu Jarral Rajput are found and the Muslim Jarrals are found in Azad Kashmir, Noweshra and Rajouri-poonch. But there are majority of Muslims in this caste.
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong><a href="katoch.php">Katoch</a>:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              The Katoch clan of the Chandravanshi lineage is considered to be one of the oldest surviving clan in the world. They first find mention in the mythological Hindu epic The Mahabharta and the second mentions in the recorded history of Alexander the Great's war records. One of the Indian kings who fought Alexander on the river Beas was a Katoch king Parmanand Chandra famously known as Porus. In past centuries, they ruled several princely states in the region. The originator of the clan was Rajanaka Bhumi Chand. Their famous Maharaja Sansar Chand-II was a great ruler. The ruler Rajanaka Bhumi Chand Katoch founded the Jwalaji Temple (now in Himachal Pradesh).
+              <dl class="dl-horizontal">
+                <dt>Gotra: </dt><dd>Kashyap, Shunak</dd>
+                <dt>Ishta: </dt><dd>Nag Devta</dd>
+              </dl>
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong>Pahore:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              The Pahore (also known as Pahur or Pahor) are a clan of Chandravanshi Rajputs. They use Khan or Jam or Malik as title.
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong>Raizada:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              The Raijada or Raizada are the descendants of the ruler of Junagadh, a kingdom in the Saurashtra peninsula. Junagadh was ruled by the <a href="chudasama.php">Chudasama</a> Rajputs, who were a branch of the Lunar or Chandravanshi line.
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong>Soam/Som:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              Soam (also known as Som or Somvanshi) are Chandravanshi Rajputs. They have descended from Mahabharata. They are the direct descendants of Som (or Moon). As the name “SOM” indicates, this community belongs to lunar dynasty. King Dushyant, his son Bharat, all Pandavas and Kauravas were Somvanshis(Chandravanshi Rajputs).
+              <dl class="dl-horizontal">
+                <dt>Gotra: </dt><dd>Atri</dd>
+                <dt>Ved: </dt><dd>Yajurved</dd>
+                <dt>Kuldevi: </dt><dd>Mahalaxmi</dd>
+              </dl>
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong><a href="tanwar.php">Tomaras</a>:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              Tomaras, or Tuvars, or Tanwars, are Chandravanshi Rajputs, and descended from Mahabharat's great hero, Arjun, through his son Abhimanyu, and grandson, Parikshat. Chakravarti Samrat (King) Yudhishtra, founded Indraprastha, present day Delhi.
+              King Anangpal conquered and re-established the Delhi Kingdom in CE 792 and founded the city of ‘Dhillika’, (modern Delhi). Besides Delhi, He covered western U.P. and most of present day Haryana and Punjab. Tomar's rule lasted until CE 1162 when last Tomar King Anangpal II appointed Prithviraj Chauhan, his grandson (his daughter's son), and King of Ajmer- as ‘caretaker’, since his own sons were very young at that time. According to the accounts kept by Tomar/Tanwar ‘Jagas’, King Anangpal Tomar appointed Prithviraj Chauhan as caretaker only when he went on a religious pilgrimage. It is also said by Tanwar ‘Jagas’ that when King Anangpal returned, Prithviraj refused to hand over the kingdom to him. Jagas are a caste in Rajasthan who are hereditary keepers of genealogical records of Rajputs.
+              <dl class="dl-horizontal">
+                <dt>Gotra: </dt><dd>Gargya</dd>
+                <dt>Ved: </dt><dd>Yajurved</dd>
+                <dt>Kuldevi: </dt><dd>Yogeshwari</dd>
+              </dl>
+            </div>
+          </article>
+
+          <article class="row" id="agnivanshi">
+            <h3 class="col-lg-12"><i class="fa fa-fire"></i> Major Agnivanshi clans</h3>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong>Bhaal:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              The bhaal gotra of rajputs belong to Garhmukteshwar Bulandshar Siyana Aligarh and many parts of Uttar Pradesh and Rajasthan.There are 62 villages in Garhmukteshwar and Siyana tehseel.In these villages various gotras of Rajput/Chauhans are lived and married in different gotras of rajput clans.Mainly all rajput gotra of this area called Chauhan and this palace called Chauhanpuri.The gotras are mostly Vats Gahlot Bhaal Kuchawah Kemlaksha Bhati Parihar Tomar and many more.
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong><a href="chauhan.php">Chauhan</a>:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              The Chauhan (also known as Nirban) are of Agnivanshi lineage. Their state was initially centered around Khetri, Khandela, Alsisar Malsisar, Srimadhopur, Alwar, Jhunjhunu, Sikar and Churu. According to legend and clan history, the Nirwan or Nirban are with Maharana Pratap against Akbar in Haldighati Battle. Nirban's have many gotras, most of these gotras are Baloji, Pithoraji, Kaluji.
+              Another clam using the same name originated as feudatories of the Pratiharas and rose to power in the wake of the decline of that power. Their state was initially centered around Sambhar in present-day Rajasthan. In the 11th century, they founded the city of Ajmer which became their capital. In the 12th century, their the then King Prithviraj Chauhan acquired Delhi from his maternal grand father, the then King Anangpal. Their most famous ruler was Prithviraj Chauhan, who won the First Battle of Tarain against an invading Muslim army but lost the Second Battle of Tarain the following year. This loss heralded a prolonged period of Muslim rule over northern India.
+              <dl class="dl-horizontal">
+                <dt>Gotra: </dt><dd>Vatsa</dd>
+                <dt>Ved: </dt><dd>Samved</dd>
+                <dt>Kuldevi: </dt><dd>Ashapura Mata</dd>
+                <dt>Guru: </dt><dd>Vashishtha</dd>
+                <dt>Ishta: </dt><dd>Mahadev</dd>
+                <dt>Devta: </dt><dd>Shri Krishna</dd>
+              </dl>
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong>Dodiya:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              The Dodiya/Dodia are Agnivanshi Rajput, one of the most celebrated Chauhan branches and according to their traditions, they were based in and around Multan in Punjab (now in Pakistan) during 12th and 13th centuries, when they built a fort near Multan by the name of Rohtashgarh. In the 14th century the Dodiya Rajputs migrated to Gujarat and established their kingdom around Girnar Junagadh. The first rajah of this state was Phul Singh Dodiya, followed by Rawat Soorsinghji, Rawat Chandrabhansinghji, Rawat Krishnaji, Rawat Chalotji and Rawat Arjundasji. A small number of the Dodiya migrated to Mewar accompanying the Rajmata of Mewar as an escort. The Dodiyas proved their valour in various battles in the service of Mewar, including the Battle of Haldighati, and were rewarded with the jagir of Lava (later called Sardargarh).
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong><a href="chavda.php">Chavda</a>:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              The Chavda dynasty (Chawda, Chavada, Chapa, Chaparana, Chapokata) was a Hindu Kshatriya family line that ruled what is now northern Gujarat from 746 to 942.
+              <dl class="dl-horizontal">
+                <dt>Gotra: </dt><dd>Vashishtha</dd>
+                <dt>Kuldevi:</dt><dd>Chamunda Mata</dd>
+                <dt>Veda: </dt><dd>Yajurved</dd>
+                <dt>Ishtadevi: </dt><dd>Chandika</dd>
+              </dl>
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong>Mori:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              The Mori clan is one of the 36 royal clans of Rajputs &amp; falls in 24 eka clans which are not divided further. Mori Rajputs are sub clan of Parmara Rajputs of Agnivansh. They ruled Chittor &amp; Malwa till early part of eighth century &amp; built the biggest fort in India at Chittor in the reign of Chitrangad Mori (Ref: Archaeological survey of India)). Last king of Mori Dynasty of Chittor was Maan Singh Mori who fought against Arab invasion. Qasim attacked Chittor via Mathura. Bappa, of guhilote (Sisodia) dynasty, was a commander in Mori army. After defeating Bin Qasim, Bappa Rawal obtained Chittor in dowry from Maan Singh Mori in 734 A.D. Then onwards Chittor is ruled by Sisodia Rajputs.Later Mori &amp; Parmar Rajputs continued to rule Malwa until Muslim incursions. Of late they remained as smaller royal states &amp; jagirdars in the central India in present state of Madhya Pradesh, presently settled in Dhar, Ujjain, Indore, bhopal, Narsinghpur &amp; Raisen.
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong>Naga:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              The Naga were one of the ancient most kshatriya tribes of India who evolved from Suryawansha (the Solar Clan of ancient Kshtriyas of India) and ruled large parts of the country at different times. They spread throughout India during the period of the epic Mahabharata. Anthropologist Gelek Lonbsang believes they have distant ancestry with East Asians based on their similar physical features. The demi-god tribe called Suparnas (in which Garuda belonged) were arch-rivals of the Nagas. However, the Nagas near Kashmir seems to be the original abode of all of them. Places like Anantnag attests this theory.
+              The worshippers of Naga were supposedly known as Naga or Nagil. Some Nair and Bunt clans claims to be of Nagvanshi origin. The trace of nagvanshi can be find out in Chotanagpur i.e. Jharkhand (Rai) community and (Shahdeo) community are also nagvanshi Rajput.
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong><a href="parmar.php">Paramara</a>:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              Paramaras are Agnivanshi Rajputs that were near-neighbours of the Solankis. They originated as feudatories of the Rashtrakutas and rose to power in the 10th century. They ruled Malwa and the area at the border between present-day Gujarat and Rajasthan. Bhoja, the celebrated king of Malwa, belonged to this dynasty. In the 12th century, the Paramaras declined in power due to conflict with the Solankis and succumbed to attack from the Delhi sultanate in 1305.
+              <dl class="dl-horizontal">
+                <dt>Gotra: </dt><dd>Vashishtha</dd>
+                <dt>Ved: </dt><dd>Yajurved</dd>
+                <dt>Kuldevi: </dt><dd>Sinchimaay Mata, Durga in North India, Kali in Ujjain</dd>
+              </dl>
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 clan-name"><strong><a href="solanki.php">Solanki</a>:</strong></div>
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 clan-desc">
+              Solankis are an Agnivanshi group descended from the Chalukyas of Karnataka who ruled much of peninsular India between the 6th and 12th centuries. In the 10th century, a local branch of the clan established control over Gujarat and ruled a state centered around the town of Patan. They went into decline in the 13th century and were displaced by the <a href="vaghela.php">Vaghela/Baghela</a>.
+              <dl class="dl-horizontal">
+                <dt>Gotra: </dt><dd>Bhardwaj, Manavya, Parashar</dd>
+                <dt>Ved: </dt><dd>Yajurved</dd>
+                <dt>Kuldevi: </dt><dd>Kali</dd>
+              </dl>
+            </div>
+          </article></div>        </div>
+      </section>
+
+      <section class="row">
+        <div class="col-lg-12 text-justify">
+          <h2><span>Ruling Rajput Dynasties of India</span></h2>
+					<div data-ajax-load="/modules/history-ruling-dynasties.php">          <ul class="ruling">
+            <li><b>Janjua Rajput Hindushahi</b> dynasty (964-1026 AD): This dynasty ruled parts of Afghanistan and Punjab. Jayapala was its first Rajput king who succeeded the last Brahmin king Bhimadeva. Its last king Bhimpala died in 1024.</li>
+            <li><b><a href="chauhan.php">Chauhan</a></b> dynasty of Ajmer &amp; Delhi&nbsp;: The Chauhans, ruled between 956 and 1192 AD, earlier over the eastern parts of the present day's Rajasthan with their capital at Ajmer and later extended their territory up to parts of modern-day Punjab, Haryana, Uttar Pradesh and Delhi. This Rajput dynasty was founded by Simharaj, who is famously known as the founder of the city of Ajmer. Prithviraj Chauhan was considered greatest of all Chauhan rulers. During his reign, the kingdom extended over Delhi, Ajmer, modern-day Rohilkhand, Kalinjar, Hansi, Kalpi, Mahoba etc. He conquered Bhatinda (in Punjab) from Ghaznavide ruler of Punjab and defeated Muhammad of Ghor in the first battle of Tarain. However, he was defeated in the second battle of Tarain, 1192.</li>
+            <li><b><a href="solanki.php">Solanki</a></b> dynasty: The Solankis established their rule over present day's Indian state of Gujarat between 945 and 1297 AD. Their kingdom came into prominence during the reign of Mulraj. They ruled with their capital situated at Anhilwara.</li>
+            <li><b><a href="parmar.php">Paramara</a></b> dynasty of Malwa</li>
+            <li><b>Parihara</b> dynasty of Kannauj: Conquered Kannauj in 816 AD, which remained its capital for about a century, declined in 10th century.</li>
+            <li><b><a href="badgurjar.php">Bargujar/Badgurjar</a></b> dynasty of Rajorgarh: Conquered Dhudhar in 9000 BC, Rajor remained its capital till declined in 10th century.</li>
+            <li><b><a href="chandel.php">Chandelas</a></b> of Khajuraho: This Rajput dynasty was founded by Jayasakthi. They ruled the areas across Bundelkhand with Khajuraho as their capital. The dynasty came to an end after Alauddin Khalji conquered Bundelkhand.</li>
+            <li><b>Gahadvalas</b> of Kannauj: This Rajput dynasty ruled the kingdom of Kannauj for around a hundred years, beginning in the late 11th century.</li>
+            <li><b>Chand</b> dynasty of Kumaon: Ruled much of Uttarakhand.</li>
+            <li><b>Jarrals</b> of Kalanaur and Jammu &amp; Kashmir. Raja Nakashena established the state Kalanaur and became the first king of Kalanaur, the Jarral dynasty ruled for 750 years.</li>
+            <li><b><a href="katoch.php">Katoch</a></b> dynasty of Kangra: Ruled much of Himachal Pradesh and parts of Punjab.</li>
+            <li><b>Bundelas</b> of Bundelkhand: Ruled Bundelkhand from 16th century onwards.</li>
+            <li><b><a href="tanwar.php">Tomaras</a></b> of Delhi &amp; Gwalior</li>
+            <li><b>Pathanias</b> of Nurpur: Ruled from 11the century to 1849 over parts of northern Punjab and Himachal Pradesh.</li>
+            <li><b><a href="sisodia.php">Sisodias</a></b> of Mewar (<a href="/view/udaipur_rajasthan">Udaipur</a>)</li>
+            <li><b><a href="kachwaha.php">Kachwahas</a></b> of <a href="/view/jaipur">Jaipur</a></li>
+            <li><b><a href="rathore.php">Rathores</a></b> of Marwar (<a href="/view/jodhpur">Jodhpur</a> &amp; <a href="/view/bikaner">Bikaner</a>)</li>
+            <li><b><a href="jadeja.php">Jadejas</a></b> of <a href="/view/kutch">Kutch</a></li>
+            <li><b><a href="hada.php">Hadas</a></b> of Jhalawar, <a href="/view/kotah">Kota</a> &amp; <a href="/view/bundi">Bundi</a></li>
+            <li><b><a href="bhati.php">Bhatis</a></b> of <a href="/view/jaisalmer">Jaisalmer</a></li>
+            <li><b><a href="shekhawat.php">Shekhawats</a></b> of Shekhawati</li>
+            <li><b>Dogra dynasty</b> of Jammu and Kashmir</li>
+          </ul></div>
+          
+        </div>
+      </section>
+
+      <hr>
+
+  
+
+		<div id="recentlyViewed" class="hidden-print hidden-xs hidden-sm" aria-hidden="true">
+      
+		</div>
+
+    
+
+    <script type="text/javascript">
+      var LazyLoad=function(k){function p(b,a){var g=k.createElement(b),c;for(c in a)a.hasOwnProperty(c)&&g.setAttribute(c,a[c]);return g}function l(b){var a=m[b],c,f;if(a)c=a.callback,f=a.urls,f.shift(),h=0,f.length||(c&&c.call(a.context,a.obj),m[b]=null,n[b].length&&j(b))}function w(){var b=navigator.userAgent;c={async:k.createElement("script").async===!0};(c.webkit=/AppleWebKit\//.test(b))||(c.ie=/MSIE/.test(b))||(c.opera=/Opera/.test(b))||(c.gecko=/Gecko\//.test(b))||(c.unknown=!0)}function j(b,a,g,f,h){var j=function(){l(b)},o=b==="css",q=[],d,i,e,r;c||w();if(a)if(a=typeof a==="string"?[a]:a.concat(),o||c.async||c.gecko||c.opera)n[b].push({urls:a,callback:g,obj:f,context:h});else{d=0;for(i=a.length;d<i;++d)n[b].push({urls:[a[d]],callback:d===i-1?g:null,obj:f,context:h})}if(!m[b]&&(r=m[b]=n[b].shift())){s||(s=k.head||k.getElementsByTagName("head")[0]);a=r.urls;d=0;for(i=a.length;d<i;++d)g=a[d],o?e=c.gecko?p("style"):p("link",{href:g,rel:"stylesheet"}):(e=p("script",{src:g}),e.async=!1),e.className="lazyload",e.setAttribute("charset","utf-8"),c.ie&&!o?e.onreadystatechange=function(){if(/loaded|complete/.test(e.readyState))e.onreadystatechange=null,j()}:o&&(c.gecko||c.webkit)?c.webkit?(r.urls[d]=e.href,t()):(e.innerHTML='@import "'+g+'";',u(e)):e.onload=e.onerror=j,q.push(e);d=0;for(i=q.length;d<i;++d)s.appendChild(q[d])}}function u(b){var a;try{a=!!b.sheet.cssRules}catch(c){h+=1;h<200?setTimeout(function(){u(b)},50):a&&l("css");return}l("css")}function t(){var b=m.css,a;if(b){for(a=v.length;--a>=0;)if(v[a].href===b.urls[0]){l("css");break}h+=1;b&&(h<200?setTimeout(t,50):l("css"))}}var c,s,m={},h=0,n={css:[],js:[]},v=k.styleSheets;return{css:function(b,a,c,f){j("css",b,a,c,f)},js:function(b,a,c,f){j("js",b,a,c,f)}}}(this.document);
+      LazyLoad.css([
+        //'//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
+        '//fonts.googleapis.com/css?family=Roboto%7CBerkshire+Swash%7CPhilosopher:400,700%7CSorts+Mill+Goudy:400,400italic',
+        '//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+        '/min/b=c&f=main.css?20230307-091053',
+        '//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css',
+        '//cdn.jsdelivr.net/fancybox/2.1.5/helpers/jquery.fancybox-buttons.min.css',
+        '//cdn.jsdelivr.net/animatecss/3.5.2/animate.min.css',
+        '/js/jquery-ui-1.11.4/jquery-ui.min.css',
+        '/c/bootstrap-accessibility.css'
+      ]);
+			var lazyScripts = [
+        '//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js',
+        '//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
+        '//cdn.jsdelivr.net/jquery.waypoints/2.0.5/waypoints.min.js',
+        '//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js',
+        '//cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js',
+        '//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js',
+        //'//cdn.jsdelivr.net/fancybox/2.1.5/helpers/jquery.fancybox-buttons.min.js',
+        '/min/b=js&f=bootstrap-accessibility.min.js,social.js,bootstrap.youtubepopup.min.js,bootstrap.IFrameModal.min.js,jquery-ui-1.11.4/jquery-ui.min.js,main.js,formSubmissions-v2.js?20221201'
+        ];
+			      LazyLoad.js(lazyScripts, function () {
+          lazyLoadCSS();
+          lazyLoadScripts();
+					$('.animate').waypoint(function(){$(this).removeClass('invisible').addClass('animated fadeInUp');}, {offset:'95%',triggerOnce:true});
+					$('[data-ajax-load]').waypoint(function(){$(this).trigger('ajax-load');}, {offset:'100%',triggerOnce:true});
+      });
+      function lazyLoadCSS() {
+        var lazyCssLinks = [];
+        $('link[rel=lazyCSS]').each(function () { lazyCssLinks.push($(this).attr('href')); });
+        lazyCssLinks.length && LazyLoad.css(lazyCssLinks);
+      }
+      function lazyLoadScripts() {
+        var lazyScriptLinks = [], lazyScriptCodes = [];
+        $('script[type=lazy]').each(function () { var $script = $(this); $script.attr('link') ? lazyScriptLinks.push($script.attr('link')) : lazyScriptCodes.push($script.text()); $script.remove(); });
+        lazyScriptLinks.length ? LazyLoad.js(lazyScriptLinks, evalScripts) : evalScripts();
+        function evalScripts() {
+          for (var i = 0, len = lazyScriptCodes.length; i < len; i++) {
+            try{
+              eval(lazyScriptCodes[i]);
+            }catch(e){
+              var msg=['Lazy Script Error: [',window.location.pathname,'] ',e.message].join('');
+              window.console && console.log(msg);
+              ga && ga('send','exception',{'exDescription': msg});
+            }
+          }
+        }
+      }
+      window.onerror=function myErrorHandler(errorMsg, url, lineNumber){ga && ga('send','exception',{'exDescription': url+":"+lineNumber+" = "+errorMsg});return false;};
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-33829885-1','indianrajputs.com');ga('send','pageview');
+    </script>
+		
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebSite",
+			"url": "https://www.indianrajputs.com/",
+			"potentialAction": {
+				"@type": "SearchAction",
+				"target": "https://www.indianrajputs.com/search.php?search={search_term_string}",
+				"query-input": "required name=search_term_string"
+			}
+		}
+		</script>
+  
+
+<div class="modal fade IFrameModal" id="IFrameModal" role="dialog" aria-hidden="true" style="display: none;"><div class="modal-dialog" id="IFrameModalDialog"><div class="modal-content" id="IFrameModalContent"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">×</button><h4 class="modal-title" id="IFrameModalTitle"></h4></div><div class="modal-body" id="IFrameModalBody"></div></div></div></div><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" tabindex="0" style="display: none;"></ul><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-2" tabindex="0" style="display: none;"></ul><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-3" tabindex="0" style="display: none;"></ul><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span></body>
+      
+    </div>
+  </section>
+
+  <section id="page-veer" class="page" aria-label="Veer Rajput Warriors in Hindi">
+    <div class="container">
+      <h2 style="font-family: 'Playfair Display', serif; color:#f51225; margin-bottom: 1rem;">वीर राजपूत</h2>
+      <div class="warriors-grid" aria-label="वीर राजपूत योद्धाओं का परिचय">
+      
+        <article class="warrior-card" tabindex="0" role="article">
+          <h3>सातल जी चौहान </h3>
+          <a class="toggle-button" href="satal.html">Know More</a>
+          <div class="description">
+          <p>संवत् ग्यारह इकानवे, चैत तीज रविवार।</p>
+          <p>कनवज देखण कारणे, चल्यो संभरि राव।</p>
+         
+        </article>
+      
+        <article class="warrior-card" tabindex="0" role="article">
+          <h3>जय सिंह जी चाहौन</h3>
+          <a class="toggle-button" href="Jaisingh.html">Know More</a>
+          <div class="description">
+          <p>संवत् ग्यारह इकानवे, चैत तीज रविवार।</p>
+          <p>कनवज देखण कारणे, चल्यो संभरि राव।</p>
+          </div>
+        </article>
+        
+        
+      
+        <article class="warrior-card" tabindex="0" role="article">
+          <h3>जग्गा जी गोही</h3>
+         <a class="toggle-button" href="Jaggaji.html">Know More</a>
+           <div class="description">
+          <p>होवे सांडियां हजार, हमीर सुमरो हरावे। वचन काज बीसहत, आप कहरे (केसर) घर आवे। सीडीओ लीधो झाल, करण सिद्ध राव जागे। फील गह्यों ले बाल, “जग्गो” गोहिल परमाणे। चारणा मेढ़ू रावल पुरोत, गोयल गोत बधावे। रे हलवद झालाहूत, सगत चीर दे सरावे।</p>
+        </div>
+        </article>
+        
+
+        <article class="warrior-card" tabindex="0" role="article">
+          <h3>पदमराज सिंह दहिया </h3>
+         <a class="toggle-button" href="Dahiyaji.html">Know More</a>
+           <div class="description">
+          <p>संस्कृत शिलालेखों में दहिया वंश का नाम दधिचक, दधिच और दहियक मिलता है और अन्य भाषा में दहिया कहते हैं। पर्वतरसार (मारवाड़) की पहाड़ी पर केवला माता का मंदिर है, उसके मंडपवाले शिलालेख विसं. 1056 के आधार पर जो कि सामंत चच् (चक्ष) का है दृष्टि रचित की संतान सिद्ध करता है।
+
+       </div>
+        </article>
+
+        <article class="warrior-card" tabindex="0" role="article">
+          <h3>रमनाथ जी राठौड़</h3>
+          <a class="toggle-button" href="ramnath.html">Know More</a>
+           <div class="description">
+          <p>रामनाथ राठौड़ किशनगढ़ के निवासी थे। यह हर अमावस्या और पूर्णिमा को अपने घोड़े पर सवार होकर डिग्गी महल में जीते थे, 
+        </div>
+        </article>
+        
+        
+        <article class="warrior-card" tabindex="0" role="article">
+          <h3>देहड़ जी पडियार</h3>
+          <a class="toggle-button" href="dehadji.html">Know More</a>
+         <div class="description">
+          <p>राजस्थान जोधपुर कि हस्तलिखित तवारीख में इस प्रकार लिखा है कि विक्रम संवत 1363 आसोप सुदि 3 को राव दहूड़जी (राव सियाजी के पौत्र अर्थात राव आस्पनाजी के जेठ पुत्र) ने मंडोर के राजा थिरसालदेव पधियार पर आक्रमण किया, और इसके 3 लड़के सेहड़ देहड़ व रामसी को बंध कर लाये । अंत में नागणा ग्राम में देवी नागणच्या की स्थापना करते समय देहड़ को माता का बाजेदार बनाया । इस विषय के निम्न पध शाखा के नाम से लिखे हैं और गढ़मंगो की बहियों में निम्न दोहे मिलते है ।
+        </div>
+        </article>
+
+        <article class="warrior-card" tabindex="0" role="article">
+          <h3>कुशल सिंह कछवाहा</h3>
+          <a class="toggle-button" href="kushalsingh kachwaha.html">Know More</a>
+         <div class="description">
+          <p>धणी महकर्णा आगे, मंडियों रण संग्राम | रणजीत नगाड़ा उपरे, कुशलो आयो काम ।। </p>
+        </div>
+        </article>
+        
+        <article class="warrior-card" tabindex="0" role="article">
+          <h3>धांधल जी सिंधल राठौड़</h3>
+          <a class="toggle-button" href="Dhandhal ji.html">Know More</a>
+         <div class="description">
+          <p>वि.संवत 1423 आम्बेर की गद्दी पर राजा उदयकर्णजी बैठे । आपके जेष्ठ पुत्र बरसिंहजी थे, जिनका ब्याह का टीका खंडेला के निर्वाण (चौहाण) वंशी राजा राव बीसलदेव की पुत्री का आया । इस अवसर पर वृद्ध राजा उदयकर्णजी ने हास्य में कहा कि यदि हमारी उम्र भी कुंवर साहब की सी होती तो आज हमारे लिये भी ब्याह का टीका आता । यह सुन तत्काल कुंवर साहब बरसिंह उठ गये और उस कन्या को ह्रदय में माता अनुमान करते हुये पिताजी से ब्याह करने का आग्रह किया और खड़ेला के महमानों को कहा कि मांग
+हमारी हो चुकी अतएव अन्य ब्याह करेगा तो भयंकर युद्ध का सामना करना पड़ेगा । </p>  </article>
+
+<article class="warrior-card" tabindex="0" role="article">
+          <h3>लालसिंह सोनगरा चौहान</h3>
+          <a class="toggle-button" href="lalsingh.html">Know More</a>
+         <div class="description">
+          <p>लालण : लालसिंह जी चौहान, शाहपुरा के राजा उम्मेदिसहजी के सामंत थे। जब विक्रम संवत् 1798 में जयपुर और जोधपुर के मध्य गगवाने में युद्ध हुआ तब जयपुर  </p>
+ </article>
+
+ <article class="warrior-card" tabindex="0" role="article">
+          <h3>मैना भाटी</h3>
+          <a class="toggle-button" href="maina bhati.html">Know More</a>
+         <div class="description">
+          <p>कर लियो ब्याह डांगी सू, उताग्रो कर्जो
+माथे सू ।
+जद तलवार निकली म्यान सू, धवलो डरग्यो मैना सू।।
+क्या आप जानते है ? </p>
+ </article>
+
+ <article class="warrior-card" tabindex="0" role="article">
+          <h3>कुंपा सोनगरा चौहान </h3>
+          <a class="toggle-button" href="maina bhati.html">Know More</a>
+         <div class="description">
+          <p>कर लियो ब्याह डांगी सू, उताग्रो कर्जो
+माथे सू ।
+जद तलवार निकली म्यान सू, धवलो डरग्यो मैना सू।।
+क्या आप जानते है ? </p>
+ </article>
+
+ <article class="warrior-card" tabindex="0" role="article">
+          <h3>कुंपा सोनगरा चौहान </h3>
+          <a class="toggle-button" href="maina bhati.html">Know More</a>
+         <div class="description">
+          <p>कर लियो ब्याह डांगी सू, उताग्रो कर्जो
+माथे सू ।
+जद तलवार निकली म्यान सू, धवलो डरग्यो मैना सू।।
+क्या आप जानते है ? </p>
+ </article>
+  <article class="warrior-card" tabindex="0" role="article">
+          <h3>कुंपा सोनगरा चौहान </h3>
+          <a class="toggle-button" href="maina bhati.html">Know More</a>
+         <div class="description">
+          <p>कर लियो ब्याह डांगी सू, उताग्रो कर्जो
+माथे सू ।
+जद तलवार निकली म्यान सू, धवलो डरग्यो मैना सू।।
+क्या आप जानते है ? </p>
+ </article>
+        </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="page-contact" class="page" aria-label="Contact Page">
+    <div class="container">
+      <h2 style="font-family: 'Playfair Display', serif; color:#e90e0e; margin-bottom: 1rem;">Get in Touch</h2>
+      <form id="contact-form" aria-label="Contact form">
+        <label for="contact-name">Name</label>
+        <input type="text" id="contact-name" name="name" placeholder="Your full name" required aria-required="true" />
+
+        <label for="contact-email">Email</label>
+        <input type="email" id="contact-email" name="email" placeholder="your.email@example.com" required aria-required="true" />
+
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" name="message" placeholder="Write your message..." required aria-required="true"></textarea>
+
+        <button type="submit" aria-label="Send Message">Send Message</button>
+        <button role="menuitem" id="nav-videos" tabindex="-1" onclick="window.location.href='videos.C:\Users\nfpl05669\Desktop\html\images\videos\videos.html'">Cancel</button>
+
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="text-center py-3" style="font-size: 0.8rem;">
+  © 2025 Indian Rajputs | Website designed & developed by <a href="https://www.linkedin.com/in/anupama-bishnawat-675345140?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app " target="_blank">Anupama Bishnawat</a>
+</footer>
+
+<script>
+  // JavaScript for navigation and page switching
+  const navButtons = document.querySelectorAll('.nav-links button');
+  const pages = document.querySelectorAll('section.page');
+
+  function setActivePage(id) {
+    pages.forEach((page) => {
+      if (page.id === id) {
+        page.classList.add('active');
+        page.setAttribute('aria-hidden', 'false');
+      } else {
+        page.classList.remove('active');
+        page.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    navButtons.forEach((btn) => {
+      if (btn.id === 'nav-' + id.split('-')[1]) {
+        btn.classList.add('active');
+        btn.setAttribute('aria-current', 'page');
+        btn.setAttribute('tabindex', '0');
+        btn.focus();
+      } else {
+        btn.classList.remove('active');
+        btn.removeAttribute('aria-current');
+        btn.setAttribute('tabindex', '-1');
+      }
+    });
+  }
+
+  navButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const btnId = button.id;
+      const targetPage = 'page-' + btnId.split('-')[1];
+      setActivePage(targetPage);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    button.addEventListener('keydown', (e) => {
+      const index = Array.from(navButtons).indexOf(e.target);
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        const nextIndex = (index + 1) % navButtons.length;
+        navButtons[nextIndex].focus();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const prevIndex = (index - 1 + navButtons.length) % navButtons.length;
+        navButtons[prevIndex].focus();
+      }
+    });
+  });
+
+  // Load default active page on DOM content loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    setActivePage('page-home');
+  });
+
+  // Contact form submission handling (mock)
+  const contactForm = document.getElementById('contact-form');
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Thank you for reaching out to Rajputana Heritage! Your message has been received.');
+    contactForm.reset();
+  });
+</script>
+</body>
+</html>
+

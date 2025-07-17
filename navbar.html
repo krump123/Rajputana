@@ -1,0 +1,18 @@
+htmlCopyEdit<!-- navbar.html --> <nav class="navbar">
+  <button onclick="goTo('home')">Home</button>
+  <button onclick="goTo('about')">About Us</button>
+  <button onclick="goTo('contact')">Contact Us</button></nav>
+<script>function goTo(section) {
+    if (window.location.pathname.includes("history.html")) {
+      // If on history.html, go back to index.html and open the SPAwindow.location.href = `index.html#${section}`;
+    } else {
+      // If on index.html (SPA), trigger view change via JavaScriptshowSection(section);
+    }
+  }
+
+  function showSection(sectionId) {
+    document.querySelectorAll('.section').forEach(el => {
+      el.style.display = 'none';
+    });
+    document.getElementById(sectionId)?.style.display = 'block';
+  }</script>
