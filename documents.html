@@ -15,8 +15,9 @@
             line-height: 1.6;
         }
         .container {
-            width: 100%;
-            height: 100%;
+           width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
         }
         
         header {
@@ -71,12 +72,14 @@
     font-weight: 700;
   }
         .gallery .row {
-            width: 100%; /* Make the image responsive */
-            height: auto; /* Maintain aspect ratio */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; /* Adjusts spacing between images */
         }
         .gallery figure {
-            width: 100%; /* Make the image responsive */
-            height: auto; /* Maintain aspect ratio */
+           flex: 0 0 10%; /* Each figure takes up 10% of the row */
+            margin: 0; /* Remove default margin */
+            padding: 5px; /* Optional: Add some padding around each figure */
         }
         .thumbnail-img {
             display: grid; /* Use grid layout */
