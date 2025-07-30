@@ -649,45 +649,70 @@
 </footer>
 
 
-  <script>
-      // navbar.js
+ <script>
+  // JavaScript for navigation and page switching
+  const navButtons = document.querySelectorAll('.nav-links button');
+  const pages = document.querySelectorAll('section.page');
 
-document.addEventListener('DOMContentLoaded', function() {
-  const navLinks = document.querySelectorAll('.nav-links button');
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(event) {
-      event.preventDefault(); // Prevent default link behavior
-
-      const target = this.id.replace('nav-', ''); // Extract target page from ID
-      let pageURL = '';
-
-      switch (target) {
-        case 'home':
-          pageURL = './index.html';
-          break;
-        case 'heritage':
-          pageURL = './index.html#page-heritage';
-          break;
-        case 'culture':
-          pageURL = './index.html#nav-culture';
-          break;
-        case 'randhawal':
-          pageURL = './index.html#nav-randhawal';
-          break;
-        case 'veer':
-          pageURL = './index.html#nav-veer';
-          break;
-        case 'contact':
-          pageURL = './index.html#nav-contact';
-          break;
-        default:
-          pageURL = 'index.html'; // Default to home page
+  function setActivePage(id) {
+    pages.forEach((page) => {
+      if (page.id === id) {
+        page.classList.add('active');
+        page.setAttribute('aria-hidden', 'false');
+      } else {
+        page.classList.remove('active');
+        page.setAttribute('aria-hidden', 'true');
       }
+    });
 
-      window.location.href = pageURL; // Redirect to the appropriate page
+    navButtons.forEach((btn) => {
+      if (btn.id === 'nav-' + id.split('-')[1]) {
+        btn.classList.add('active');
+        btn.setAttribute('aria-current', 'page');
+        btn.setAttribute('tabindex', '0');
+        btn.focus();
+      } else {
+        btn.classList.remove('active');
+        btn.removeAttribute('aria-current');
+        btn.setAttribute('tabindex', '-1');
+      }
+    });
+  }
+
+  navButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const btnId = button.id;
+      const targetPage = 'page-' + btnId.split('-')[1];
+      setActivePage(targetPage);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    button.addEventListener('keydown', (e) => {
+      const index = Array.from(navButtons).indexOf(e.target);
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        const nextIndex = (index + 1) % navButtons.length;
+        navButtons[nextIndex].focus();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const prevIndex = (index - 1 + navButtons.length) % navButtons.length;
+        navButtons[prevIndex].focus();
+      }
     });
   });
-  </script>
+
+  // Load default active page on DOM content loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    setActivePage('page-home');
+  });
+
+  // Contact form submission handling (mock)
+  const contactForm = document.getElementById('contact-form');
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Thank you for reaching out to Rajputana Heritage! Your message has been received.');
+    contactForm.reset();
+  });
+</script>
 </body>
 </html>
