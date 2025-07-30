@@ -258,75 +258,51 @@ nav {
   <!-- IMAGE GRID END -->
 </section>
 
-<footer class="text-center py-3" style="font-size: 0.8rem; width:100%;">
-  © 2025 Indian Rajputs | Website designed &amp; developed by <a href="https://www.linkedin.com/in/anupama-bishnawat-675345140?utm_source=share&amp;utm_campaign=share_via&amp;utm_content=profile&amp;utm_medium=android_app " target="_blank">Anupama Bishnawat</a>
+<footer class="text-center py-3" style="font-size: 0.8rem;">
+  © 2025 Indian Rajputs | Website designed & developed by <a href="https://www.linkedin.com/in/anupama-bishnawat-675345140?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app " target="_blank">Anupama Bishnawat</a>
 </footer>
 
+    <script>
+      // navbar.js
 
- <script>
-  // JavaScript for navigation and page switching
-  const navButtons = document.querySelectorAll('.nav-links button');
-  const pages = document.querySelectorAll('section.page');
+document.addEventListener('DOMContentLoaded', function() {
+  const navLinks = document.querySelectorAll('.nav-links button');
 
-  function setActivePage(id) {
-    pages.forEach((page) => {
-      if (page.id === id) {
-        page.classList.add('active');
-        page.setAttribute('aria-hidden', 'false');
-      } else {
-        page.classList.remove('active');
-        page.setAttribute('aria-hidden', 'true');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent default link behavior
+
+      const target = this.id.replace('nav-', ''); // Extract target page from ID
+      let pageURL = '';
+
+      switch (target) {
+        case 'home':
+          pageURL = './index.html';
+          break;
+        case 'heritage':
+          pageURL = './index.html#page-heritage';
+          break;
+        case 'culture':
+          pageURL = './index.html#nav-culture';
+          break;
+        case 'randhawal':
+          pageURL = './index.html#nav-randhawal';
+          break;
+        case 'veer':
+          pageURL = './index.html#nav-veer';
+          break;
+        case 'contact':
+          pageURL = './index.html#nav-contact';
+          break;
+        default:
+          pageURL = 'index.html'; // Default to home page
       }
-    });
 
-    navButtons.forEach((btn) => {
-      if (btn.id === 'nav-' + id.split('-')[1]) {
-        btn.classList.add('active');
-        btn.setAttribute('aria-current', 'page');
-        btn.setAttribute('tabindex', '0');
-        btn.focus();
-      } else {
-        btn.classList.remove('active');
-        btn.removeAttribute('aria-current');
-        btn.setAttribute('tabindex', '-1');
-      }
-    });
-  }
-
-  navButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const btnId = button.id;
-      const targetPage = 'page-' + btnId.split('-')[1];
-      setActivePage(targetPage);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    button.addEventListener('keydown', (e) => {
-      const index = Array.from(navButtons).indexOf(e.target);
-      if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        const nextIndex = (index + 1) % navButtons.length;
-        navButtons[nextIndex].focus();
-      } else if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        const prevIndex = (index - 1 + navButtons.length) % navButtons.length;
-        navButtons[prevIndex].focus();
-      }
+      window.location.href = pageURL; // Redirect to the appropriate page
     });
   });
+});
 
-  // Load default active page on DOM content loaded
-  document.addEventListener('DOMContentLoaded', () => {
-    setActivePage('page-home');
-  });
-
-  // Contact form submission handling (mock)
-  const contactForm = document.getElementById('contact-form');
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Thank you for reaching out to Rajputana Heritage! Your message has been received.');
-    contactForm.reset();
-  });
-</script>
+    </script>
 </body>
 </html>
