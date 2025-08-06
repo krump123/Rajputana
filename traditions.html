@@ -25,8 +25,15 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
         .gallery-grid figure[class*="col-"] {
-  flex: 0 0 calc(16.66% - 1rem) !important;
-  max-width: unset !important;
+  all: unset;
+  display: block;
+  flex: 0 0 calc(16.66% - 1rem);
+  margin: 0;
+  box-sizing: border-box;
+  background: #f9f9f9;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 /* Responsive */
@@ -746,6 +753,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
     </body>
 </html>
+
 
 
 
