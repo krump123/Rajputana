@@ -24,6 +24,10 @@
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+        .gallery-grid figure[class*="col-"] {
+  flex: 0 0 calc(16.66% - 1rem) !important;
+  max-width: unset !important;
+}
 
 /* Responsive */
 @media (max-width: 992px) {
@@ -742,6 +746,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
     </body>
 </html>
+
 
 
 
