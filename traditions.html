@@ -11,20 +11,10 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: space-between;
+ justify-content: flex-start;
 }
 
-.gallery-grid figure {
-  float: none !important;
-  flex: 0 0 calc(16.66% - 1rem); /* 6 columns in a row */
-  margin: 0;
-  box-sizing: border-box;
-  background: #f9f9f9;
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-        .gallery-grid figure[class*="col-"] {
+.gallery-grid figure[class*="col-"] {
   all: unset;
   display: block;
   flex: 0 0 calc(16.66% - 1rem);
@@ -759,6 +749,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
     </body>
 </html>
+
 
 
 
