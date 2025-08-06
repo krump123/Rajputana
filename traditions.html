@@ -9,13 +9,19 @@
         .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 1rem;
+  gap: 1.5rem;
   margin-top: 2rem;
 }
 
 .gallery-grid figure {
-  margin: 0;
+ margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  border: 1px solid #ddd;
   overflow: hidden;
+  border-radius: 6px;
+  background: #f9f9f9;
   text-align: center;
 }
 
@@ -24,6 +30,12 @@
   height: 150px;
   object-fit: cover;
   display: block;
+}
+        .gallery-grid figcaption {
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
         .thumbnail-img {
   display: grid;
@@ -768,6 +780,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
     </body>
 </html>
+
 
 
 
