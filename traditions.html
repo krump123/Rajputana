@@ -7,54 +7,33 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
 
-        .gallery-row {
+        .gallery-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: space-between;
 }
-        figure[class^="col-"] {
+
+.gallery-grid figure {
   float: none !important;
-  display: block;
-  box-sizing: border-box;
-  flex: 0 0 calc(16.66% - 1rem); /* 6 columns in a row with gap */
+  flex: 0 0 calc(16.66% - 1rem); /* 6 columns in a row */
   margin: 0;
+  box-sizing: border-box;
   background: #f9f9f9;
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-        .thumbnail-img img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  display: block;
-}
-
-.caption.small {
-  font-size: 0.8rem;
-  padding: 0.5rem;
-  text-align: center;
-}
-
-/* Responsive adjustments */
+/* Responsive */
 @media (max-width: 992px) {
-  figure[class^="col-"] {
-    flex: 0 0 calc(25% - 1rem); /* 4 per row */
-  }
+  .gallery-grid figure { flex: 0 0 calc(25% - 1rem); }
 }
-
 @media (max-width: 768px) {
-  figure[class^="col-"] {
-    flex: 0 0 calc(33.33% - 1rem); /* 3 per row */
-  }
+  .gallery-grid figure { flex: 0 0 calc(33.33% - 1rem); }
 }
-
 @media (max-width: 576px) {
-  figure[class^="col-"] {
-    flex: 0 0 calc(50% - 1rem); /* 2 per row */
-  }
+  .gallery-grid figure { flex: 0 0 calc(50% - 1rem); }
 }
 
          /* Header & nav */
@@ -143,7 +122,8 @@
          <div class="container" style="display: flex; flex-wrap:wrap; justify-content: space-between;">
         <div class="row gallery" id="pictures">
 
-<div class="gallery-grid">
+<div class="container">
+  <div class="gallery-grid">
     <figure class="col-xs-6 col-sm-4 col-md-3 col-lg-2" itemprop="photo" itemscope itemtype="https://schema.org/ImageObject">
       <a class="thumbnail" rel="gallery" itemprop="url"
          href="https://www.indianrajputs.com/i/t/i/ajabgarh-Kunwar-Pushpendra-Singh-of-Ajabgarh-during-his-Tilak-ceremony-1.jpg"
@@ -768,6 +748,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
     </body>
 </html>
+
 
 
 
