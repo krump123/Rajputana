@@ -6,27 +6,80 @@
     <title>Historic Videos</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet" />
     <style>
-        /* Basic styles */
+       * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
         body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            background: #f5f5f7;
-            color: #202124;
-            line-height: 1.6;
-        }
-        .container {
-           width: 90%;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        
-        header {
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+.gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+ justify-content: flex-start;
+}
+
+.gallery-grid figure {
+  flex: 0 0 calc(16.66% - 1rem); /* 6 per row on large screens */
+  margin: 0;
+  box-sizing: border-box;
+  background: #f9f9f9;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+}
+        .gallery-grid img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+        figcaption {
+      padding: 0.5rem;
+      font-size: 0.85rem;
+    }
+
+@media (max-width: 992px) {
+  .gallery-grid figure {
+    flex: 0 0 calc(25% - 1rem); /* 4 per row */
+  }
+}
+@media (max-width: 768px) {
+  .gallery-grid figure {
+    flex: 0 0 calc(33.33% - 1rem); /* 3 per row */
+  }
+}
+@media (max-width: 576px) {
+  .gallery-grid figure {
+    flex: 0 0 calc(50% - 1rem); /* 2 per row */
+  }
+}
+@media (max-width: 400px) {
+  .gallery-grid figure {
+    flex: 0 0 100%; /* 1 per row */
+  }
+}
+
+         /* Header & nav */
+  header {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
         nav {
             display: flex;
     align-items: center;
@@ -34,6 +87,7 @@
     padding: 1rem 0;
     flex-wrap: wrap;
         }
+        
         .logo {
             font-family: 'Playfair Display', serif;
             font-size: 1.9rem;
@@ -68,50 +122,9 @@
   }
   .nav-links button.active {
     color: hsl(0, 82%, 51%);
-    border-bottom: 3px solid hsl(0, 82%, 51%);
+    border-bottom: 3px solid hsl(357, 82%, 51%);
     font-weight: 700;
   }
-        .gallery .row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between; /* Adjusts spacing between images */
-        }
-        .gallery figure {
-           flex: 0 0 10%; /* Each figure takes up 10% of the row */
-            margin: 0; /* Remove default margin */
-            padding: 5px; /* Optional: Add some padding around each figure */
-        }
-        .thumbnail-img {
-            display: grid; /* Use grid layout */
-            grid-template-columns: repeat(8, 1fr); /* 6 videos per row */
-            gap: 1rem; /* Space between the thumbnails */
-            margin-top: 2rem; /* Space above the thumbnails *
-        }
-        .thumbnail-img img {
-            display: block; /* Ensure the anchor behaves like a block element */
-            text-align: center; /* Center the caption text */
-            width: 200px; /* Set a fixed width for the thumbnails */
-        }
-
-        .col-lg-2 {
-            width: 100%; /* Make the image responsive */
-            height: auto; /* Maintain aspect ratio */
-        }
-
-        .col-lg-12{
-             width: 100%; /* Make the image responsive */
-            height: auto; /* Maintain aspect ratio */
-        }
-        .col-lg-4 { width: 100%; /* Make the image responsive */
-            height: auto; /* Maintain aspect ratio */
-        }
-        footer {
-            background: #202124;
-            color: #eee;
-            text-align: center;
-            padding: 2.3rem 1rem;
-            font-size: 0.9rem;
-        }
     </style>
 </head>
 <body>
@@ -131,10 +144,8 @@
     </nav>
   </div>
 </header>
-  
-  <div class="body-wrapper">
-    <main class="container main-container"   
-  <div class="col-lg-12 gallery" id="pictures" style="display: flex; flex-wrap:wrap">
+    <main class="main-container">
+      <section class="gallery-grid">
 	<figure itemprop="photo" itemscope="" itemtype="https://schema.org/ImageObject">
             <a class="thumbnail" rel="gallery" itemprop="url" href="https://www.indianrajputs.com/i/t/i/Alipura_Stamped_Paper_1.jpg" title="" data-caption="Alipura Stamped Paper" data-tid="alipura" data-tname="Alipura" data-toggle="tooltip" data-placement="top" data-original-title="Alipura Stamped Paper (Alipura)">
               <div class="thumbnail-img" itemprop="thumbnail" itemscope="" itemtype="https://schema.org/ImageObject" style="height: 150px;">
@@ -723,7 +734,7 @@
 		<img itemprop="url" class="land" src="https://www.indianrajputs.com/i/t/i/thumb200_RAJGARH-STATE-GAZETTE-1.jpg" alt="Rajgarh State Gazette (Rajgarh)" loading="lazy"></div><figcaption class="caption small" itemprop="name">Rajgarh State Gazette (Rajgarh)</figcaption></a><meta itemprop="width" content="800"><meta itemprop="height" content="600"></figure><figure itemprop="photo" itemscope="" itemtype="https://schema.org/ImageObject"><a class="thumbnail" rel="gallery" itemprop="url" href="https://www.indianrajputs.com/i/t/i/rajgarh-HH-Raja-Rawat-BALBHADRA-SINGH-Rawat-of-Rajgarh-1882-to-1902-1.jpg" title="" data-caption="Stamp of HH Raja Rawat BALBHADRA SINGH, Rawat of Rajgarh 1882 to 19022" data-tid="rajgarh" data-tname="Rajgarh" data-toggle="tooltip" data-placement="top" data-original-title="Stamp of HH Raja Rawat BALBHADRA SINGH, Rawat of Rajgarh 1882 to 19022 (Rajgarh)"><div class="thumbnail-img" itemprop="thumbnail" itemscope="" itemtype="https://schema.org/ImageObject" style="height: 150px;"><img itemprop="url" class="land" src="https://www.indianrajputs.com/i/t/i/thumb200_rajgarh-HH-Raja-Rawat-BALBHADRA-SINGH-Rawat-of-Rajgarh-1882-to-1902-1.jpg" alt="Stamp of HH Raja Rawat BALBHADRA SINGH, Rawat of Rajgarh 1882 to 19022 (Rajgarh)" loading="lazy"></div><figcaption class="caption small" itemprop="name">Stamp of HH Raja Rawat BALBHADRA SINGH, Rawat of Rajgarh 1882 to 19022 (Rajgarh)</figcaption></a><meta itemprop="width" content="797"><meta itemprop="height" content="251"></figure><figure itemprop="photo" itemscope="" itemtype="https://schema.org/ImageObject"><a class="thumbnail" rel="gallery" itemprop="url" href="https://www.indianrajputs.com/i/t/i/thumb800_rajgarh-HH-Raja-Rawat-Sir-BANE-SINGH-Rawat-of-Rajgarh-1902-1916-born-1857-1.jpg" title="" data-caption="Stamp of HH Raja Rawat Sir BANE SINGH, Rawat of Rajgarh 1902/1916" data-tid="rajgarh" data-tname="Rajgarh" data-toggle="tooltip" data-placement="top" data-original-title="Stamp of HH Raja Rawat Sir BANE SINGH, Rawat of Rajgarh 1902/1916 (Rajgarh)"><div class="thumbnail-img" itemprop="thumbnail" itemscope="" itemtype="https://schema.org/ImageObject" style="height: 150px;"><img itemprop="url" class="land" src="https://www.indianrajputs.com/i/t/i/thumb200_rajgarh-HH-Raja-Rawat-Sir-BANE-SINGH-Rawat-of-Rajgarh-1902-1916-born-1857-1.jpg" alt="Stamp of HH Raja Rawat Sir BANE SINGH, Rawat of Rajgarh 1902/1916 (Rajgarh)" loading="lazy"></div><figcaption class="caption small" itemprop="name">Stamp of HH Raja Rawat Sir BANE SINGH, Rawat of Rajgarh 1902/1916 (Rajgarh)</figcaption></a><meta itemprop="width" content="900"><meta itemprop="height" content="293"></figure><figure itemprop="photo" itemscope="" itemtype="https://schema.org/ImageObject"><a class="thumbnail" rel="gallery" itemprop="url" href="https://www.indianrajputs.com/i/t/i/thumb800_rajpipla-Book-on-triumph-of-Maharaja-Shri-Sir-Vijaysinhji-of-Rajpipla-in-the-Epsom-Derby-of-England-in-1934--1.jpg" title="" data-caption="Book on triumph of Maharaja Shri Sir Vijaysinhji of Rajpipla in the Epsom Derby of England in 1934." data-tid="rajpipla" data-tname="Rajpipla" data-toggle="tooltip" data-placement="top" data-original-title="Book on triumph of Maharaja Shri Sir Vijaysinhji of Rajpipla in the Epsom Derby of England in 1934. (Rajpipla)"><div class="thumbnail-img" itemprop="thumbnail" itemscope="" itemtype="https://schema.org/ImageObject" style="height: 150px;"><img itemprop="url" class="land" src="https://www.indianrajputs.com/i/t/i/thumb200_rajpipla-Book-on-triumph-of-Maharaja-Shri-Sir-Vijaysinhji-of-Rajpipla-in-the-Epsom-Derby-of-England-in-1934--1.jpg" alt="Book on triumph of Maharaja Shri Sir Vijaysinhji of Rajpipla in the Epsom Derby of England in 1934. (Rajpipla)" loading="lazy"></div><figcaption class="caption small" itemprop="name">Book on triumph of Maharaja Shri Sir Vijaysinhji of Rajpipla in the Epsom Derby of England in 1934. (Rajpipla)</figcaption></a><meta itemprop="width" content="1125"><meta itemprop="height" content="900"></figure><figure itemprop="photo" itemscope="" itemtype="https://schema.org/ImageObject"><a class="thumbnail" rel="gallery" itemprop="url" href="https://www.indianrajputs.com/i/t/i/rajpipla-Special-postal-cover-issued-to-commemorate-the-platinum-jubilee-of-the-triumph-of-Maharaja-Sir-Vijaysinhji-of-Rajpipla-in-the-Epsom-Derby-of-England-on-6th-June-1934--1.jpg" title="" data-caption="Special postal cover issued to commemorate the platinum jubilee of the triumph of Maharaja Sir Vijaysinhji of Rajpipla in the Epsom Derby of England on 6th June 1934." data-tid="rajpipla" data-tname="Rajpipla" data-toggle="tooltip" data-placement="top" data-original-title="Special postal cover issued to commemorate the platinum jubilee of the triumph of Maharaja Sir Vijaysinhji of Rajpipla in the Epsom Derby of England on 6th June 1934. (Rajpipla)"><div class="thumbnail-img" itemprop="thumbnail" itemscope="" itemtype="https://schema.org/ImageObject" style="height: 150px;"><img itemprop="url" class="land" src="https://www.indianrajputs.com/i/t/i/thumb200_rajpipla-Special-postal-cover-issued-to-commemorate-the-platinum-jubilee-of-the-triumph-of-Maharaja-Sir-Vijaysinhji-of-Rajpipla-in-the-Epsom-Derby-of-England-on-6th-June-1934--1.jpg" alt="Special postal cover issued to commemorate the platinum jubilee of the triumph of Maharaja Sir Vijaysinhji of Rajpipla in the Epsom Derby of England on 6th June 1934. (Rajpipla)" loading="lazy"></div><figcaption class="caption small" itemprop="name">Special postal cover issued to commemorate the platinum jubilee of the triumph of Maharaja Sir Vijaysinhji of Rajpipla in the Epsom Derby of England on 6th June 1934. (Rajpipla)</figcaption></a><meta itemprop="width" content="783"><meta itemprop="height" content="434"></figure><figure itemprop="photo" itemscope="" itemtype="https://schema.org/ImageObject"><a class="thumbnail" rel="gallery" itemprop="url" href="https://www.indianrajputs.com/i/t/i/Rajpipla-State-postage-stamp-during-the-reign-of-Maharana-Gambhirsinhji-1.jpg" title="" data-caption="Rajpipla State postage stamp during the reign of Maharana Gambhirsinhji" data-tid="rajpipla" data-tname="Rajpipla" data-toggle="tooltip" data-placement="top" data-original-title="Rajpipla State postage stamp during the reign of Maharana Gambhirsinhji (Rajpipla)"><div class="thumbnail-img" itemprop="thumbnail" itemscope="" itemtype="https://schema.org/ImageObject" style="height: 150px;"><img itemprop="url" class="land" src="https://www.indianrajputs.com/i/t/i/thumb200_Rajpipla-State-postage-stamp-during-the-reign-of-Maharana-Gambhirsinhji-1.jpg" alt="Rajpipla State postage stamp during the reign of Maharana Gambhirsinhji (Rajpipla)" loading="lazy"></div><figcaption class="caption small" itemprop="name">Rajpipla State postage stamp during the reign of Maharana Gambhirsinhji (Rajpipla)</figcaption></a><meta itemprop="width" content="362"><meta itemprop="height" content="215"></figure><figure itemprop="photo" itemscope="" itemtype="https://schema.org/ImageObject"><a class="thumbnail" rel="gallery" itemprop="url" href="https://www.indianrajputs.com/i/t/i/Rajpipla-State-two-annas-stamp-during-the-reign-of-Maharaja-Vijaysinhji-1.jpg" title="" data-caption="Rajpipla State two annas stamp during the reign of Maharaja Vijaysinhji" data-tid="rajpipla" data-tname="Rajpipla" data-toggle="tooltip" data-placement="top" data-original-title="Rajpipla State two annas stamp during the reign of Maharaja Vijaysinhji (Rajpipla)"><div class="thumbnail-img" itemprop="thumbnail" itemscope="" itemtype="https://schema.org/ImageObject" style="height: 150px;"><img itemprop="url" class="land" src="https://www.indianrajputs.com/i/t/i/thumb200_Rajpipla-State-two-annas-stamp-during-the-reign-of-Maharaja-Vijaysinhji-1.jpg" alt="Rajpipla State two annas stamp during the reign of Maharaja Vijaysinhji (Rajpipla)" loading="lazy"></div><figcaption class="caption small" itemprop="name">Rajpipla State two annas stamp during the reign of Maharaja Vijaysinhji (Rajpipla)</figcaption></a><meta itemprop="width" content="400"><meta itemprop="height" content="218"></figure>
 				</div>
 			</section>
-
+</main>
 <footer class="text-center py-3" style="font-size: 0.8rem;">
   © 2025 Indian Rajputs | Website designed & developed by <a href="https://www.linkedin.com/in/anupama-bishnawat-675345140?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app " target="_blank">Anupama Bishnawat</a>
 </footer>
@@ -772,4 +783,5 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 </body>
 </html>
+
 
