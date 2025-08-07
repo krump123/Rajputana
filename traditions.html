@@ -6,8 +6,16 @@
     <title>Fort Gallery</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-
-        .gallery-grid {
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+        body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+.gallery-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -22,7 +30,20 @@
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
 }
+        .gallery-grid img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+        figcaption {
+      padding: 0.5rem;
+      font-size: 0.85rem;
+    }
 
 @media (max-width: 992px) {
   .gallery-grid figure {
@@ -128,9 +149,7 @@
     <div id="page-loader"></div>
 <div class="body-wrapper">
       <main class="main-container">
-        
-
-  <div class="gallery-grid">
+      <section class="gallery-grid">
     <figure itemscope itemtype="https://schema.org/ImageObject">
       <a class="thumbnail" rel="gallery" itemprop="url"
          href="https://www.indianrajputs.com/i/t/i/ajabgarh-Kunwar-Pushpendra-Singh-of-Ajabgarh-during-his-Tilak-ceremony-1.jpg"
@@ -702,10 +721,8 @@
                             <meta itemprop="width" content="480">
                             <meta itemprop="height" content="415">
                             </figure>
-                          </div>
-            </div>
-
-
+                          </section>
+  </main>
 <footer class="text-center py-3" style="font-size: 0.8rem;">
   © 2025 Indian Rajputs | Website designed & developed by 
   <a href="https://www.linkedin.com/in/anupama-bishnawat-675345140?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app " target="_blank">Anupama Bishnawat</a>
@@ -751,10 +768,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+</script> </body></html>
 
-    </script>
-    </body>
-</html>
 
 
 
