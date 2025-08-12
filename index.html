@@ -126,11 +126,12 @@
     margin-right: auto;
   }
 
- /* Cards grid */
-display: grid;
+ * Cards grid */
+.cards-grid {
+  display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  align-items: stretch; /* Make all cards in a row equal height */
+  align-items: stretch; /* Equal height in each row */
 }
 
 .card {
@@ -140,16 +141,18 @@ display: grid;
   box-shadow: 0 8px 20px rgb(0 0 0 / 0.07);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   cursor: default;
-  height: 100%; /* Force equal height */
+  height: 100%; /* Equal height */
+  min-height: 180px; /* Prevent short cards from shrinking */
   display: flex;
   flex-direction: column;
-  justify-content: space-between
+  justify-content: space-between;
 }
 
 .card:hover,
 .card:focus-within {
   box-shadow: 0 16px 40px rgba(219, 26, 26, 0.918);
   transform: translateY(-6px);
+}
 
 .card h3 {
   font-family: 'Playfair Display', serif;
@@ -157,12 +160,12 @@ display: grid;
   margin-bottom: 0.8rem;
   color: #e00f0f;
 }
+
 .card p {
   font-size: 1.05rem;
   color: #444;
-  flex-grow: 1; /* Fills remaining space */
+  flex-grow: 1; /* Pushes footer content down if needed */
 }
-
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .card {
@@ -1239,6 +1242,7 @@ display: grid;
 </script>
 </body>
 </html>
+
 
 
 
