@@ -126,35 +126,53 @@
     margin-right: auto;
   }
 
-  /* Cards grid */
-  .cards-grid {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-  }
+ /* Cards grid */
+.cards-grid {
+  display: flex;
+  flex-wrap: wrap; /* allows wrapping on smaller screens */
+  gap: 2rem;
+}
+
+.card {
+  flex: 1 1 calc(33.33% - 2rem); /* 3 cards per row */
+  background: white;
+  border-radius: 14px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 8px 20px rgb(0 0 0 / 0.07);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: default;
+}
+
+.card:hover,
+.card:focus-within {
+  box-shadow: 0 16px 40px rgba(219, 26, 26, 0.918);
+  transform: translateY(-6px);
+}
+
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  color: #e00f0f;
+}
+
+.card p {
+  font-size: 1.05rem;
+  color: #444;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
   .card {
-    background: white;
-    border-radius: 14px;
-    padding: 2rem 2.5rem;
-    box-shadow: 0 8px 20px rgb(0 0 0 / 0.07);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-    cursor: default;
+    flex: 1 1 calc(50% - 2rem); /* 2 per row */
   }
-  .card:hover,
-  .card:focus-within {
-    box-shadow: 0 16px 40px rgba(219, 26, 26, 0.918);
-    transform: translateY(-6px);
+}
+
+@media (max-width: 576px) {
+  .card {
+    flex: 1 1 100%; /* full width on mobile */
   }
-  .card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    margin-bottom: 0.8rem;
-    color: #e00f0f;
-  }
-  .card p {
-    font-size: 1.05rem;
-    color: #444;
-  }
+}
 
   /* Contact form */
   form {
@@ -428,33 +446,26 @@
     </div>
   </section>
 
-  <section id="page-culture" class="page" aria-label="Culture Page">
-    <div class="container">
-      <h2 style="font-family: 'Playfair Display', serif; color:#e81a1a; margin-bottom:1rem;">Rich Rajputana Culture</h2>
-      
-      <div class="cards-grid" aria-label="Cultural aspects">
+  <div class="cards-grid" aria-label="Cultural aspects">
   <a href="weddings.html" class="card-link">
     <article class="card" role="article">
       <h3>Weddings</h3>
       <p>Elegance. Honor. Eternity. The spirit of Rajputana in every wedding moment.</p>
     </article>
   </a>
+
+  <article class="card" tabindex="0" role="article">
+    <h3>Music &amp; Dance</h3>
+    <p>Folk music and dances like Ghoomar echo the joyful spirit and heritage of Rajput traditions.</p>
+  </article>
+
+  <a href="paintings.html" class="card-link">
+    <article class="card" role="article">
+      <h3>Paintings</h3>
+      <p>Art that speaks of valor, culture, and timeless beauty.</p>
+    </article>
+  </a>
 </div>
-
-        <article class="card" tabindex="0" role="article">
-          <h3>Music &amp; Dance</h3>
-          <p>Folk music and dances like Ghoomar echo the joyful spirit and heritage of Rajput traditions.</p>
-        </article>
-
-        <article class="card" tabindex="0" role="article">
-          <a href="paintings.html" class="card-link">
-          <h3>Paintings</h3>
-          <p>Art that speaks of valor, culture, and timeless beauty.</p>
-        </article>
-
-      </div>
-    </div>
-  </section>
 
   <section id="page-randhawal" class="page" aria-label="History">
     <div class="container">
@@ -1219,5 +1230,6 @@
 </script>
 </body>
 </html>
+
 
 
